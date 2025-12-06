@@ -16,7 +16,9 @@ import MealDetails from '../Pages/MealDetails/MealDetails';
     element:<MainHome></MainHome>,
     children:[{
         path:'/',
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=>fetch('http://localhost:3000/recent-meal')
+
     },{
         path:'/meals',
         element:<Meals></Meals>,
