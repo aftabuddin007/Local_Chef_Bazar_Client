@@ -16,7 +16,7 @@ const handleLogout = ()=>{
 
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-base-100 shadow-sm max-w-7xl mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -26,9 +26,14 @@ const handleLogout = ()=>{
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
-      <li><NavLink to='/pets-supplies' className={navLinkClass}> Pets/Supplies</NavLink></li>
-      <li><NavLink to='/auth/login' className={navLinkClass}> Login</NavLink></li>
-      <li><NavLink to='/auth/register' className={navLinkClass}> Register</NavLink></li>
+      <li><NavLink to='/meals' className={navLinkClass}>Meals</NavLink></li>
+      {
+        user && <>
+        <li><NavLink to='/dashboard' className={navLinkClass}>Dashboard</NavLink></li>
+        
+        </>
+      }
+      
       </ul>
     </div>
     <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -36,8 +41,13 @@ const handleLogout = ()=>{
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
        <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
-      <li><NavLink to='/auth/login' className={navLinkClass}> Login</NavLink></li>
-      <li><NavLink to='/auth/register' className={navLinkClass}> Register</NavLink></li>
+       <li><NavLink to='/meals'className={navLinkClass}> Meals</NavLink></li>
+      {
+        user && <>
+        <li><NavLink to='/dashboard' className={navLinkClass}>Dashboard</NavLink></li>
+        
+        </>
+      }
     </ul>
   </div>
   <div className="navbar-end">

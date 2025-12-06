@@ -20,7 +20,7 @@ const handleLogin=(data)=>{
     // console.log(data)
     loginInUser(data.email,data.password)
     .then(res=>{
-        console.log(res.user)
+        // console.log(res.user)
         toast.success('Signin Successful')
 navigate(from,{replace:true})
 
