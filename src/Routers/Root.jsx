@@ -7,6 +7,7 @@ import Home from '../Pages/HomePage/Home';
 import Meals from '../Pages/Meals/Meals';
 import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 import Loading from '../Components/Loading/Loading';
+import MealDetails from '../Pages/MealDetails/MealDetails';
 
 
     const router = createBrowserRouter([
@@ -21,6 +22,9 @@ import Loading from '../Components/Loading/Loading';
         element:<Meals></Meals>,
         loader:()=>fetch('http://localhost:3000/meals'),
         hydrateFallbackElement:<Loading></Loading>
+    },{
+        path:'/meal-details/:id',
+        element:<MealDetails></MealDetails>
     }]
 },{
 path:'/dashboard',
