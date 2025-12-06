@@ -1,0 +1,122 @@
+[
+  {
+    "foodName": "Spicy Chicken Biryani",
+    "chefName": "Arif Hossain",
+    "foodImage": "https://i.ibb.co.com/wNsLRsgX/Spicy-Chicken-Biryani.jpg",
+    "price": 220,
+    "rating": 4.7,
+    "ingredients": ["Chicken", "Rice", "Spices", "Onion", "Ghee"],
+    "deliveryArea": "Dhanmondi, Dhaka",
+    "estimatedDeliveryTime": "35 minutes",
+    "chefExperience": "5 years",
+    "chefId": "chef_001"
+  },
+  {
+    "foodName": "Beef Tehari",
+    "chefName": "Rima Akter",
+    "foodImage": "https://i.ibb.co.com/zVXQgCNY/Beef-Tehari.jpg",
+    "price": 250,
+    "rating": 4.8,
+    "ingredients": ["Beef", "Rice", "Mustard Oil", "Green Chili"],
+    "deliveryArea": "Mirpur, Dhaka",
+    "estimatedDeliveryTime": "40 minutes",
+    "chefExperience": "7 years",
+    "chefId": "chef_002"
+  },
+  {
+    "foodName": "Vegetable Khicuri",
+    "chefName": "Shamim Reza",
+    "foodImage": "https://i.ibb.co.com/Pvy7J5gZ/Vegetable-Khicuri.jpg",
+    "price": 150,
+    "rating": 4.5,
+    "ingredients": ["Rice", "Lentils", "Potato", "Carrot", "Turmeric"],
+    "deliveryArea": "Uttara, Dhaka",
+    "estimatedDeliveryTime": "30 minutes",
+    "chefExperience": "3 years",
+    "chefId": "chef_003"
+  },
+  {
+    "foodName": "Chicken Alfredo Pasta",
+    "chefName": "Nishat Chowdhury",
+    "foodImage": "https://i.ibb.co.com/wNpq0690/Chicken-Pasta.webp",
+    "price": 320,
+    "rating": 4.6,
+    "ingredients": ["Pasta", "Chicken", "Cream", "Garlic", "Cheese"],
+    "deliveryArea": "Banani, Dhaka",
+    "estimatedDeliveryTime": "45 minutes",
+    "chefExperience": "6 years",
+    "chefId": "chef_004"
+  },
+  {
+    "foodName": "Thai Vegetable Soup",
+    "chefName": "Jahidul Islam",
+    "foodImage": "https://i.ibb.co.com/BH50zQFt/Spicy-tom-yum-soup.jpg",
+    "price": 180,
+    "rating": 4.3,
+    "ingredients": ["Mushroom", "Carrot", "Capsicum", "Broth"],
+    "deliveryArea": "Mohakhali, Dhaka",
+    "estimatedDeliveryTime": "25 minutes",
+    "chefExperience": "4 years",
+    "chefId": "chef_005"
+  },
+  {
+    "foodName": "Grilled Beef Steak",
+    "chefName": "Sharmin Haque",
+    "foodImage": "https://i.ibb.co.com/Ndhj6HPr/Grilledteak.jpg",
+    "price": 650,
+    "rating": 4.9,
+    "ingredients": ["Beef", "Butter", "Garlic", "Spices"],
+    "deliveryArea": "Gulshan, Dhaka",
+    "estimatedDeliveryTime": "50 minutes",
+    "chefExperience": "10 years",
+    "chefId": "chef_006"
+  },
+  {
+    "foodName": "Chicken Shawarma",
+    "chefName": "Tareq Mahmud",
+    "foodImage": "https://i.ibb.co.com/4nrq36SC/Chicken-Shawarma.jpg",
+    "price": 120,
+    "rating": 4.4,
+    "ingredients": ["Chicken", "Pita Bread", "Garlic Sauce", "Lettuce"],
+    "deliveryArea": "Bashundhara, Dhaka",
+    "estimatedDeliveryTime": "20 minutes",
+    "chefExperience": "2 years",
+    "chefId": "chef_007"
+  },
+  {
+    "foodName": "Fish Fry Platter",
+    "chefName": "Nazmul Karim",
+    "foodImage": "https://i.ibb.co.com/HTqRYXpK/Fish.webp",
+    "price": 300,
+    "rating": 4.6,
+    "ingredients": ["Rui Fish", "Flour", "Spices", "Lemon"],
+    "deliveryArea": "Agargaon, Dhaka",
+    "estimatedDeliveryTime": "35 minutes",
+    "chefExperience": "8 years",
+    "chefId": "chef_008"
+  },
+  {
+    "foodName": "Mutton Kebab",
+    "chefName": "Hasina Begum",
+    "foodImage": "https://i.ibb.co.com/kVwqVLpT/Mutton-seekh-kebaba.webp",
+    "price": 280,
+    "rating": 4.7,
+    "ingredients": ["Mutton", "Chili", "Onion", "Spices"],
+    "deliveryArea": "Khilgaon, Dhaka",
+    "estimatedDeliveryTime": "30 minutes",
+    "chefExperience": "12 years",
+    "chefId": "chef_009"
+  },
+  {
+    "foodName": "Creamy Mushroom Risotto",
+    "chefName": "Rafiul Bari",
+    "foodImage": "https://i.ibb.co.com/fdpjc7QQ/images.jpg",
+    "price": 400,
+    "rating": 4.8,
+    "ingredients": ["Rice", "Mushroom", "Cream", "Garlic"],
+    "deliveryArea": "Wari, Dhaka",
+    "estimatedDeliveryTime": "45 minutes",
+    "chefExperience": "6 years",
+    "chefId": "chef_010"
+  }
+]

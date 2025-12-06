@@ -6,6 +6,7 @@ import Register from '../Pages/Authentication/Register/Register';
 import Home from '../Pages/HomePage/Home';
 import Meals from '../Pages/Meals/Meals';
 import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
+import Loading from '../Components/Loading/Loading';
 
 
     const router = createBrowserRouter([
@@ -17,7 +18,9 @@ import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
         element:<Home></Home>
     },{
         path:'/meals',
-        element:<Meals></Meals>
+        element:<Meals></Meals>,
+        loader:()=>fetch('http://localhost:3000/meals'),
+        hydrateFallbackElement:<Loading></Loading>
     }]
 },{
 path:'/dashboard',
