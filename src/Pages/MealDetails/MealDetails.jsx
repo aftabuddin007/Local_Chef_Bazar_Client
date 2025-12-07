@@ -1,23 +1,73 @@
-import  { useEffect, useState } from 'react';
+import  {  useState } from 'react';
 import { useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
-
+import Review from '../HomePage/Review/Review';
+import { useQuery } from "@tanstack/react-query";
+import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 const MealDetails = () => {
+  const {user} = useAuth()
     const {id} =useParams()
-const [details,setDetails]=useState({})
-const [loading,setLoading]=useState(true)
-useEffect(()=>{
-    fetch(`http://localhost:3000/meals/${id}`)
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-  setDetails(data.result)
-  setLoading(false)
+const [showForm, setShowForm] = useState(false);
+const {data:details,isLoading, refetch} = useQuery({
+queryKey:['meal',id],
+queryFn:async ()=>{
+  const res = await axios.get(`http://localhost:3000/meals/${id}`)
+  return res.data.result
+}
 })
+const {data:reviews = []} =useQuery({
+  queryKey:["reviews",id],
+  queryFn:async ()=>{
+const res = await axios.get(`http://localhost:3000/reviews/${id}`)
+return res.data;
+  }
+})
+const {register, handleSubmit, reset} = useForm()
 
-},[])
+const onSubmit = async (data)=>{
+  try{
+      const ratingFloat = parseFloat(data.rating);
 
-  if(loading){
+    const reviewPayload = {
+      foodId: id,
+      reviewerName: user.displayName,
+      reviewerImage: user.photoURL,
+      reviewerEmail: user.email,
+      rating: ratingFloat,        // float rating
+      comment: data.comment, 
+       
+         // dynamic comment
+    };
+console.log(reviewPayload)
+    // const idToken = await user.getIdToken();
+await axios.post("http://localhost:3000/reviews", reviewPayload
+  // , {
+  // headers: { Authorization: `Bearer ${idToken}` },
+// }
+);
+
+    toast.success("Review submitted successfully!");
+    reset();
+    setShowForm(false);
+
+    // REFRESH reviews using refetch
+    refetch(); 
+  }
+    catch (err) {
+    toast.error("Failed to submit review");
+  }
+  
+}
+
+
+
+
+
+
+  if(isLoading){
     return <Loading></Loading>
   }
 
@@ -79,6 +129,56 @@ estimatedDeliveryTime
           </button>
         </div>
       </div>
+        <div className='grid grid-cols-1 sm:grid-cols-2 max-w-7xl mx-auto mt-10'>
+    {
+      reviews.map(r=><Review 
+      key={r._id}
+      reviewerName={r.reviewerName}
+      reviewerImage={r.reviewerImage}
+      rating={r.rating}
+      comment={r.comment}
+      date={r.date}
+      ></Review>)
+    }
+
+        </div>
+        <div className="flex justify-center items-center gap-4 mt-6">
+ {/* You can open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_3').showModal()}>Give Review</button>
+<dialog id="my_modal_3" className="modal">
+  <div className="modal-box">
+    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => document.getElementById('my_modal_3').close()}>✕</button>
+
+    <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-4 rounded shadow mt-4 max-w-lg">
+      <div className="mb-2">
+        <label className="block font-semibold">Rating</label>
+        <input
+          type="number"
+          step="0.1"
+          min="0"
+          max="5"
+          {...register("rating", { required: true })}
+          className="input input-bordered w-full"
+        />
+      </div>
+      <div className="mb-2">
+        <label className="block font-semibold">Comment</label>
+        <textarea
+          {...register("comment", { required: true })}
+          className="textarea textarea-bordered w-full"
+        />
+      </div>
+      <button type="submit" className="btn btn-success mt-2">
+        Submit Review
+      </button>
+    </form>
+  </div>
+</dialog>
+
+
+
+  <button className="btn btn-primary">Add to Favorite</button>
+</div>
     </div>
         </div>
     );
