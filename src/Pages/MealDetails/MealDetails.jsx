@@ -61,7 +61,27 @@ await axios.post("http://localhost:3000/reviews", reviewPayload
   }
   
 }
-
+const handleAddFavorite = async ()=>{
+  try{
+    const favoritePayload = {
+      userEmail: user.email,
+      mealId: details._id,       
+      mealName: details.foodName,
+      chefId: details.chefId,
+      chefName: details.chefName,
+      price: details.price,
+    };
+    const res = await axios.post('http://localhost:3000/favorites',favoritePayload)
+    if(res.data.success){
+      toast.success(res.data.message)
+    }else{
+      toast.error(res.data.message);
+    }
+  }catch(err){
+console.error(err);
+    toast.error("Failed to add to favorites");
+  }
+}
 
 
 
@@ -177,7 +197,7 @@ estimatedDeliveryTime
 
 
 
-  <button className="btn btn-primary">Add to Favorite</button>
+  <button onClick={handleAddFavorite} className="btn btn-primary">Add to Favorite</button>
 </div>
     </div>
         </div>
