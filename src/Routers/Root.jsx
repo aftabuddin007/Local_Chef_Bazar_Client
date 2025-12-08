@@ -8,6 +8,7 @@ import Meals from '../Pages/Meals/Meals';
 import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 import Loading from '../Components/Loading/Loading';
 import MealDetails from '../Pages/MealDetails/MealDetails';
+import OrderForm from '../Pages/OrderForm/OrderForm';
 
 
     const router = createBrowserRouter([
@@ -27,6 +28,9 @@ import MealDetails from '../Pages/MealDetails/MealDetails';
     },{
         path:'/meal-details/:id',
         element:<MealDetails></MealDetails>
+    },{
+        path:'/order-form/:id',
+        element:<OrderForm></OrderForm>
     }]
 },{
 path:'/dashboard',

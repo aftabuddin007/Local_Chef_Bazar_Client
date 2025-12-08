@@ -1,5 +1,5 @@
 import  {  useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import Loading from '../../Components/Loading/Loading';
 import Review from '../HomePage/Review/Review';
 import { useQuery } from "@tanstack/react-query";
@@ -79,7 +79,7 @@ const handleAddFavorite = async ()=>{
     }
   }catch(err){
 console.error(err);
-    toast.error("Failed to add to favorites");
+    toast.error("Already added the food.");
   }
 }
 
@@ -141,12 +141,11 @@ estimatedDeliveryTime
           </div>
 
           {/* Order Button */}
-          <button
-            onClick={() => window.location.href = `/order/${details.id}`}
-            className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
+          <Link to={`/order-form/${details._id}`}
+            className="btn w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
           >
             Order Now
-          </button>
+          </Link>
         </div>
       </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 max-w-7xl mx-auto mt-10'>

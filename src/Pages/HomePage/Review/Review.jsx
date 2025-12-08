@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Review = ({ reviewerName, reviewerImage, rating, comment, date }) => {
+
+
+  
     return (
         <div>
              <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 md:max-w-lg lg:max-w-xl">
