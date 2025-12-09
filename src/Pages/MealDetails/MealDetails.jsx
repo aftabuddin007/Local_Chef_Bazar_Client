@@ -11,7 +11,7 @@ const MealDetails = () => {
   const {user} = useAuth()
     const {id} =useParams()
 const [showForm, setShowForm] = useState(false);
-const {data:details,isLoading, refetch} = useQuery({
+const {data:details,isLoading, } = useQuery({
 queryKey:['meal',id],
 queryFn:async ()=>{
   const res = await axios.get(`http://localhost:3000/meals/${id}`)
@@ -19,7 +19,7 @@ queryFn:async ()=>{
 }
 })
 // console.log(details)
-const {data:reviews = []} =useQuery({
+const {data:reviews = [],refetch} =useQuery({
   queryKey:["reviews",id],
   queryFn:async ()=>{
 const res = await axios.get(`http://localhost:3000/reviews/${id}`)
