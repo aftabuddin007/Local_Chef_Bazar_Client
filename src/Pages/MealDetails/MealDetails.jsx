@@ -18,6 +18,7 @@ queryFn:async ()=>{
   return res.data.result
 }
 })
+// console.log(details)
 const {data:reviews = []} =useQuery({
   queryKey:["reviews",id],
   queryFn:async ()=>{
@@ -33,6 +34,7 @@ const onSubmit = async (data)=>{
 
     const reviewPayload = {
       foodId: id,
+      mealName:details.foodName,
       reviewerName: user.displayName,
       reviewerImage: user.photoURL,
       reviewerEmail: user.email,

@@ -10,6 +10,7 @@ import Loading from '../Components/Loading/Loading';
 import MealDetails from '../Pages/MealDetails/MealDetails';
 import OrderForm from '../Pages/OrderForm/OrderForm';
 import MyOrder from '../Pages/UserDashboard/MyOrder/MyOrder';
+import MyReview from '../Pages/UserDashboard/MyReview/MyReview';
 
 
     const router = createBrowserRouter([
@@ -40,6 +41,10 @@ children:[
     {
         path:'myOrder',
         element:<MyOrder></MyOrder>
+    },
+    {
+        path:'myReview',
+        element:<MyReview></MyReview>
     }
 ]
 }
