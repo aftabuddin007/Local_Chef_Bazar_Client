@@ -9,6 +9,7 @@ import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 import Loading from '../Components/Loading/Loading';
 import MealDetails from '../Pages/MealDetails/MealDetails';
 import OrderForm from '../Pages/OrderForm/OrderForm';
+import MyOrder from '../Pages/UserDashboard/MyOrder/MyOrder';
 
 
     const router = createBrowserRouter([
@@ -34,7 +35,13 @@ import OrderForm from '../Pages/OrderForm/OrderForm';
     }]
 },{
 path:'/dashboard',
-element:<DashboardLayout></DashboardLayout>
+element:<DashboardLayout></DashboardLayout>,
+children:[
+    {
+        path:'myOrder',
+        element:<MyOrder></MyOrder>
+    }
+]
 }
 
 

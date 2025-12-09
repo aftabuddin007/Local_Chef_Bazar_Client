@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import Loading from '../../Components/Loading/Loading';
 

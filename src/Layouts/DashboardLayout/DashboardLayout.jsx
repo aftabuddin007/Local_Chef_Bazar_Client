@@ -1,14 +1,16 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
-import { Outlet } from 'react-router';
+// import { Outlet } from 'react-router';
 import Footer from '../../Components/Footer/Footer';
+import DashboardMain from './DashboardMain/DashboardMain';
 
 const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <h2 className='text-4xl font-bold text-center'>This is dashboard</h2>
-            <Outlet></Outlet>
+            
+            {/* <Outlet></Outlet> */}
+<DashboardMain></DashboardMain>
             <Footer></Footer>
             
         </div>

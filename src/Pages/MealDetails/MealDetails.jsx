@@ -41,7 +41,7 @@ const onSubmit = async (data)=>{
        
          // dynamic comment
     };
-console.log(reviewPayload)
+// console.log(reviewPayload)
     // const idToken = await user.getIdToken();
 await axios.post("http://localhost:3000/reviews", reviewPayload
   // , {
