@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { CiStar } from "react-icons/ci";
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+// import { toast } from 'react-toastify';
 const MyReview = () => {
+     const [selectedReview, setSelectedReview] = useState(null);
 const {register, handleSubmit, reset} = useForm()
 
         const {user} = useAuth()
@@ -33,7 +35,7 @@ Swal.fire({
 
 axiosSecure.delete(`/reviews/${id}`)
 .then(res=>{
-   console.log(res.data) 
+  //  console.log(res.data) 
    if(res.data.deletedCount){
     refetch()
 Swal.fire({
@@ -48,9 +50,29 @@ Swal.fire({
   }
 });
 }
-const onSubmit = async (data)=>{
-    
-}
+
+const onSubmit = async (data) => {
+    if (!selectedReview) return;
+    const res = await axiosSecure.patch(`/reviews/${selectedReview._id}`, data);
+    console.log(res.data)
+    if (res.data.modifiedCount) {
+      Swal.fire("Updated!", "Your review has been updated.", "success");
+      // toast.success('Your review has been updated.')
+      refetch();
+      document.getElementById('editModal').close();
+    }
+  };
+
+  // Open modal and set selected review
+  const openEditModal = (review) => {
+    setSelectedReview(review);
+    reset({ rating: review.rating, comment: review.comment });
+    document.getElementById('editModal').showModal();
+  };
+
+
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -76,36 +98,9 @@ const onSubmit = async (data)=>{
         <td>{review.date}</td>
         <td>
             <div className=''>
-               <button className="btn btn-primary mr-4" onClick={()=>document.getElementById('my_modal_3').showModal()}>Edit</button>
-<dialog id="my_modal_3" className="modal">
-  <div className="modal-box">
-    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => document.getElementById('my_modal_3').close()}>✕</button>
+                                <button className="btn btn-primary mr-2" onClick={() => openEditModal(review)}>Edit</button>
 
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-4 rounded shadow mt-4 max-w-lg">
-      <div className="mb-2">
-        <label className="block font-semibold">Rating</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          max="5"
-          {...register("rating", { required: true })}
-          className="input input-bordered w-full"
-        />
-      </div>
-      <div className="mb-2">
-        <label className="block font-semibold">Comment</label>
-        <textarea
-          {...register("comment", { required: true })}
-          className="textarea textarea-bordered w-full"
-        />
-      </div>
-      <button type="submit" className="btn btn-success mt-2">
-        Submit Review
-      </button>
-    </form>
-  </div>
-</dialog>
+
                 <button onClick={()=>handleReviewDelete(review._id)} className='btn sm btn-secondary'> Delete</button>
             </div>
         </td>
@@ -116,7 +111,25 @@ const onSubmit = async (data)=>{
       
     </tbody>
   </table>
+ 
 </div>
+ <dialog id="editModal" className="modal">
+        <div className="modal-box">
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                  onClick={() => document.getElementById('editModal').close()}>✕</button>
+          <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+            <div className="mb-2">
+              <label>Rating</label>
+              <input type="number" step="0.1" min="0" max="5" {...register("rating")} className="input input-bordered w-full" />
+            </div>
+            <div className="mb-2">
+              <label>Comment</label>
+              <textarea {...register("comment")} className="textarea textarea-bordered w-full" />
+            </div>
+            <button type="submit" className="btn btn-success w-full mt-2">Update Review</button>
+          </form>
+        </div>
+      </dialog>
         </div>
     );
 };
