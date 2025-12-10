@@ -11,6 +11,7 @@ import MealDetails from '../Pages/MealDetails/MealDetails';
 import OrderForm from '../Pages/OrderForm/OrderForm';
 import MyOrder from '../Pages/UserDashboard/MyOrder/MyOrder';
 import MyReview from '../Pages/UserDashboard/MyReview/MyReview';
+import MyFavouriteMeal from '../Pages/UserDashboard/MyFavouriteMeal/MyFavouriteMeal';
 
 
     const router = createBrowserRouter([
@@ -45,6 +46,10 @@ children:[
     {
         path:'myReview',
         element:<MyReview></MyReview>
+    },
+    {
+        path:'myFavMeal',
+        element:<MyFavouriteMeal></MyFavouriteMeal>
     }
 ]
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -54,7 +54,7 @@ Swal.fire({
 const onSubmit = async (data) => {
     if (!selectedReview) return;
     const res = await axiosSecure.patch(`/reviews/${selectedReview._id}`, data);
-    console.log(res.data)
+    // console.log(res.data)
     if (res.data.modifiedCount) {
       Swal.fire("Updated!", "Your review has been updated.", "success");
       // toast.success('Your review has been updated.')
