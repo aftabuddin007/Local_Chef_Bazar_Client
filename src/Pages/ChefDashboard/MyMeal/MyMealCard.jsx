@@ -1,7 +1,43 @@
 import React from 'react';
 import { CiStar } from "react-icons/ci";
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
+import { Link } from 'react-router';
 
-const MyMealCard = ({meal}) => {
+const MyMealCard = ({meal,refetch}) => {
+const axiosSecure =useAxiosSecure()
+
+const handleMealDelete = (id)=>{
+console.log(id)
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to Delete this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+axiosSecure.delete(`/meal/${id}`)
+.then(res=>{
+  //  console.log(res.data) 
+   if(res.data.deletedCount){
+    refetch()
+Swal.fire({
+      title: "Deleted!",
+      text: "Your Favorite Meal has been deleted.",
+      icon: "success"
+    });
+   }
+})
+
+    
+  }
+});
+}
+
     return (
         <div>
             <div className="bg-white shadow-md rounded-xl overflow-hidden">
@@ -43,11 +79,11 @@ const MyMealCard = ({meal}) => {
 
         {/* Action Buttons */}
         <div className="flex justify-between">
-          <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
-            Delete
-          </button>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+          <Link to={`/dashboard/update-meal/${meal._id}`} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
             Update
+          </Link>
+          <button onClick={()=>handleMealDelete(meal._id)} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+            Delete
           </button>
         </div>
       </div>

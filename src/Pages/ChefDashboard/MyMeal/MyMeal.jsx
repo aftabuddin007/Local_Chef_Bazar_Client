@@ -25,7 +25,7 @@ const {data:meals=[],refetch}=useQuery({
       {/* Grid Layout */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {meals.map((meal) => (
-          <MyMealCard key={meal._id} meal={meal} />
+          <MyMealCard key={meal._id} refetch={refetch} meal={meal} />
         ))}
       </div>
     </div> 

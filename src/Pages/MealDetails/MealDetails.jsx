@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 const MealDetails = () => {
   const {user} = useAuth()
     const {id} =useParams()
-const [showForm, setShowForm] = useState(false);
+const [ setShowForm] = useState(false);
 const {data:details,isLoading, } = useQuery({
 queryKey:['meal',id],
 queryFn:async ()=>{

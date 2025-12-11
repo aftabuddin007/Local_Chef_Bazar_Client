@@ -17,6 +17,7 @@ import SuccessPayment from '../Pages/Payment/SuccessPayment';
 import CancelPayment from '../Pages/Payment/CancelPayment';
 import CreateMeal from '../Pages/ChefDashboard/CreateMeal/CreateMeal';
 import MyMeal from '../Pages/ChefDashboard/MyMeal/MyMeal';
+import UpdateMeal from '../Pages/ChefDashboard/UpdateMeal/UpdateMeal';
 
 
     const router = createBrowserRouter([
@@ -71,6 +72,9 @@ children:[
     },{
         path:'my-meal',
         element:<MyMeal></MyMeal>
+    },{
+        path:'update-meal/:id',
+        element:<UpdateMeal></UpdateMeal>
     }
 ]
 }
