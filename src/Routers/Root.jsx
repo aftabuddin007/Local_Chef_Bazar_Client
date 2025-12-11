@@ -16,6 +16,7 @@ import MyProfile from '../Pages/MyProfile/MyProfile';
 import SuccessPayment from '../Pages/Payment/SuccessPayment';
 import CancelPayment from '../Pages/Payment/CancelPayment';
 import CreateMeal from '../Pages/ChefDashboard/CreateMeal/CreateMeal';
+import MyMeal from '../Pages/ChefDashboard/MyMeal/MyMeal';
 
 
     const router = createBrowserRouter([
@@ -67,6 +68,9 @@ children:[
     },{
         path:'create-meal',
         element:<CreateMeal></CreateMeal>
+    },{
+        path:'my-meal',
+        element:<MyMeal></MyMeal>
     }
 ]
 }

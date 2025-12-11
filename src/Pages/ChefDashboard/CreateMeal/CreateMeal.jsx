@@ -11,7 +11,7 @@ const CreateMeal = () => {
   const onSubmit = async (data) => {
     const{foodName,chefName,chefId,price,rating,ingredients,estimatedDeliveryTime,chefExperience,userEmail,foodImage}=data
     const imageFile = foodImage[0]; 
-    console.log(data)
+    // console.log(data)
     try {
       const imageUrl = await imageUpload(imageFile);
      
@@ -170,7 +170,7 @@ const CreateMeal = () => {
         {/* User Email */}
         <div className="flex flex-col md:col-span-2">
           <label className="mb-1 font-semibold">User Email</label>
-          <input
+          <input  {...register('userEmail', { required: true })}
             value={user?.email}
             readOnly
             className="border p-2 rounded bg-gray-100"
