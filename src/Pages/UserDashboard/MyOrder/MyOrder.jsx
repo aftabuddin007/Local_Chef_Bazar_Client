@@ -17,12 +17,19 @@ const {data:orders=[]}=useQuery({
 
 
 
-    return (
-        <div>
-            <h2 className="font-bold text-2xl">All My Orders: {orders.length}</h2>
-            <MyOrderCard orders={orders} key={orders._id}></MyOrderCard>
-        </div>
-    );
-};
+return (
+  <div>
+    <h2 className="font-bold text-2xl">All My Orders: {orders.length}</h2>
 
+    <div className="grid gap-4">
+      {orders.map(order => 
+        <MyOrderCard 
+          key={order._id}
+          order={order}
+        />
+      )}
+    </div>
+  </div>
+);
+}
 export default MyOrder;

@@ -8,7 +8,7 @@ const MyFavouriteMeal = () => {
         const {user} = useAuth()
     const axiosSecure = useAxiosSecure()
 const {data:favorites=[],refetch}=useQuery({
-    queryKey:['myReviews',user?.email],
+    queryKey:['myFavMeal',user?.email],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/favorites?email=${user?.email}`)
         return res.data;

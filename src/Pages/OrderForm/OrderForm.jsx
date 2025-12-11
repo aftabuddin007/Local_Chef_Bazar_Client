@@ -32,18 +32,20 @@ useEffect(() => {
       mealName: meal.foodName,
       price: meal.price,
       chefId: meal.chefId, // make sure meal has chefId
-      userEmail: user.email,
+      chefName: meal.chefName, // make sure meal has chefId
+      userEmail: user?.email,
       quantity: 1
     });
   }
 }, [meal, user, reset]);
-
+// console.log(meal)
 const onSubmit = async (data)=>{
     const orderData = {
         foodId: meal._id,
       mealName: data.mealName,
       price: totalPrice,
       quantity: data.quantity,
+      chefName:data.chefName,
       chefId: data.chefId,
       userEmail: data.userEmail,
       userAddress: data.userAddress,
@@ -138,6 +140,15 @@ if(isLoading){
           <label className="font-semibold">Chef ID</label>
           <input
             {...register("chefId")}
+            disabled
+            className="w-full p-3 border rounded-lg bg-gray-100"
+          />
+        </div>
+        {/* chefname */}
+        <div className="mb-4">
+          <label className="font-semibold">Chef Name</label>
+          <input
+            {...register("chefName")}
             disabled
             className="w-full p-3 border rounded-lg bg-gray-100"
           />

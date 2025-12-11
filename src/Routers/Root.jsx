@@ -12,6 +12,10 @@ import OrderForm from '../Pages/OrderForm/OrderForm';
 import MyOrder from '../Pages/UserDashboard/MyOrder/MyOrder';
 import MyReview from '../Pages/UserDashboard/MyReview/MyReview';
 import MyFavouriteMeal from '../Pages/UserDashboard/MyFavouriteMeal/MyFavouriteMeal';
+import MyProfile from '../Pages/MyProfile/MyProfile';
+import SuccessPayment from '../Pages/Payment/SuccessPayment';
+import CancelPayment from '../Pages/Payment/CancelPayment';
+import CreateMeal from '../Pages/ChefDashboard/CreateMeal/CreateMeal';
 
 
     const router = createBrowserRouter([
@@ -40,6 +44,10 @@ path:'/dashboard',
 element:<DashboardLayout></DashboardLayout>,
 children:[
     {
+        path:'myProfile',
+        element:<MyProfile></MyProfile>
+    },
+    {
         path:'myOrder',
         element:<MyOrder></MyOrder>
     },
@@ -50,6 +58,15 @@ children:[
     {
         path:'myFavMeal',
         element:<MyFavouriteMeal></MyFavouriteMeal>
+    },{
+        path:'payment-success',
+        element:<SuccessPayment></SuccessPayment>
+    },{
+        path:'payment-cancel',
+        element:<CancelPayment></CancelPayment>
+    },{
+        path:'create-meal',
+        element:<CreateMeal></CreateMeal>
     }
 ]
 }
