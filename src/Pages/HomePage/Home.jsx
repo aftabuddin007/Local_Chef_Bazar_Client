@@ -1,13 +1,15 @@
 import React from 'react';
 import RecentMeal from './RecentMeal/RecentMeal';
-import { useLoaderData } from 'react-router';
-import HomeReview from './HomeReview/HomeReview';
 
+import HomeReview from './HomeReview/HomeReview';
+import { useLoaderData } from 'react-router';
 
 const reviewPromise = fetch('http://localhost:3000/reviews')
 .then(res=>res.json())
 const Home = () => {
     const recentMealPromise = useLoaderData()
+    console.log(recentMealPromise)
+    
     return (
         <div>
             <h2 className="text-4xl font-bold">This is home</h2>

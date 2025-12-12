@@ -18,6 +18,10 @@ import CancelPayment from '../Pages/Payment/CancelPayment';
 import CreateMeal from '../Pages/ChefDashboard/CreateMeal/CreateMeal';
 import MyMeal from '../Pages/ChefDashboard/MyMeal/MyMeal';
 import UpdateMeal from '../Pages/ChefDashboard/UpdateMeal/UpdateMeal';
+import OrderRequest from '../Pages/ChefDashboard/OrderRequest/OrderRequest';
+import ManageRequest from '../Pages/AdminDashBoard/ManageRequest/ManageRequest';
+import ManageUser from '../Pages/AdminDashBoard/Manageuser/ManageUser';
+import PlatformStatistics from '../Pages/AdminDashBoard/PlatformStatistics/PlatformStatistics';
 
 
     const router = createBrowserRouter([
@@ -27,7 +31,8 @@ import UpdateMeal from '../Pages/ChefDashboard/UpdateMeal/UpdateMeal';
     children:[{
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:3000/recent-meal')
+        loader:()=>fetch('http://localhost:3000/recent-meal'),
+        
 
     },{
         path:'/meals',
@@ -75,6 +80,18 @@ children:[
     },{
         path:'update-meal/:id',
         element:<UpdateMeal></UpdateMeal>
+    },{
+        path:'order-request',
+        element:<OrderRequest></OrderRequest>
+    },{
+        path:'manage-request',
+        element:<ManageRequest></ManageRequest>
+    },{
+        path:'manage-user',
+        element:<ManageUser></ManageUser>
+    },{
+        path:'platform-statistics',
+        element:<PlatformStatistics></PlatformStatistics>
     }
 ]
 }
