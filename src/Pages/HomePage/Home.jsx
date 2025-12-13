@@ -8,7 +8,7 @@ const reviewPromise = fetch('http://localhost:3000/reviews')
 .then(res=>res.json())
 const Home = () => {
     const recentMealPromise = useLoaderData()
-    console.log(recentMealPromise)
+    // console.log(recentMealPromise)
     
     return (
         <div>

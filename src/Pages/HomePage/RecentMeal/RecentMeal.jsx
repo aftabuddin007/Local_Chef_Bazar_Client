@@ -6,7 +6,7 @@ import MealCard from "../../../Components/MealCard/MealCard";
 // import axios from "axios";
 
 const RecentMeal = ({recentMealPromise}) => {
-    console.log(recentMealPromise)
+    // console.log(recentMealPromise)
 //    const {data=[],isLoading} = useQuery({
 //      queryKey: ['meals'],          // unique key
 //     queryFn: async () => {

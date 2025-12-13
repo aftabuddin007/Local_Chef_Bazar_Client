@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 // import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import Loading from '../../Components/Loading/Loading';
+import useAxiosSecure from '../../Contexts/AuthContext/useAxiosSecure';
 
 const OrderForm = () => {
+  const navigate = useNavigate()
+  const axiosSecure = useAxiosSecure()
     const {id}=  useParams()
     const {user}=useAuth()
     const {data:meal,isLoading} = useQuery({
@@ -31,8 +34,8 @@ useEffect(() => {
     reset({
       mealName: meal.foodName,
       price: meal.price,
-      chefId: meal.chefId, // make sure meal has chefId
-      chefName: meal.chefName, // make sure meal has chefId
+      chefId: meal.chefId, 
+      chefName: meal.chefName, 
       userEmail: user?.email,
       quantity: 1
     });
@@ -67,13 +70,14 @@ Swal.fire({
     
     
 try {
-       const res = await axios.post('http://localhost:3000/orders', orderData);
+       const res = await axiosSecure.post('/orders', orderData);
         if (res.data.success) {
           Swal.fire({
             title: "Order Placed!",
             text: res.data.message,
             icon: "success",
           });
+          navigate('/dashboard/myOrder')
           reset();
 }}
         
@@ -87,7 +91,7 @@ try {
 
 if(isLoading){
 
-<Loading></Loading> 
+return <Loading></Loading> 
 }}
 
     return (

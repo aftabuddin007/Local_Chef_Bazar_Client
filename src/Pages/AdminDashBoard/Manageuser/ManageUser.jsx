@@ -68,7 +68,7 @@ if(isLoading){
         <td>{user.status}</td>
         <td>{user.role}</td>
         <td>
-           {(user.role === "user" || user.role === "chef") && user.status !== "fraud" && (
+           {(user.role === "customer" || user.role === "chef") && user.status !== "fraud" && (
   <button
     onClick={() => handleMakeFraud(user._id)}
     className="btn btn-sm btn-secondary"

@@ -4,8 +4,11 @@ import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { imageUpload } from '../../../utils';
+import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 
 const CreateMeal = () => {
+  const axiosSecure = useAxiosSecure()
+  
     const {user}=useAuth()
  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = async (data) => {
@@ -31,7 +34,7 @@ const CreateMeal = () => {
         createdAt:new Date()
       };
 
-      const res = await axios.post("http://localhost:3000/meals", mealData); 
+      const res = await axiosSecure.post("/meals",mealData); 
 
       if (res.data.success) {
         toast.success("Meal added successfully!");
