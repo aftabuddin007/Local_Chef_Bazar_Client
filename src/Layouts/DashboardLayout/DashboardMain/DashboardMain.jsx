@@ -10,12 +10,14 @@ import { FaClipboardList } from "react-icons/fa";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import { MdSupervisedUserCircle } from "react-icons/md";
 import { FcStatistics } from "react-icons/fc";
+import useRole from '../../../hooks/useRole';
 
 
 
 
 
 const DashboardMain = () => {
+  const {role} = useRole()
     return (
         <div className='max-w-7xl mx-auto'>
             <div className="drawer lg:drawer-open">
@@ -58,7 +60,9 @@ const DashboardMain = () => {
         </li>
 
 
-        <li>
+       {
+        role === 'customer' && <>
+         <li>
           <Link to='/dashboard/myOrder' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Orders">
             {/* order icon */}
             <TbBorderStyle2 />
@@ -82,7 +86,11 @@ const DashboardMain = () => {
             <span className="is-drawer-close:hidden">My Reviews</span>
           </Link>
         </li>
-         <li>
+        </>
+       }
+        {
+          role === 'chef' && <>
+           <li>
           <Link to='/dashboard/create-meal' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create Meal">
             {/* Home icon */}
             <MdCreateNewFolder />
@@ -110,7 +118,12 @@ const DashboardMain = () => {
             <span className="is-drawer-close:hidden">Order Request </span>
           </Link>
         </li>
-         <li>
+          
+          </>
+        }
+         {
+          role === 'admin' && <>
+          <li>
           <Link to='/dashboard/manage-request' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage-Request">
             {/* Home icon */}
             <MdManageAccounts />
@@ -126,7 +139,7 @@ const DashboardMain = () => {
 
 
             {/* <svg xmlns="https://img.icons8.com/fluency-systems-filled/48/purchase-order.png" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg> */}
-            <span className="is-drawer-close:hidden">Manage User </span>
+            <span className="is-drawer-close:hidden">Manage User Role</span>
           </Link>
         </li>
          <li>
@@ -138,6 +151,10 @@ const DashboardMain = () => {
             <span className="is-drawer-close:hidden">Platform Statics</span>
           </Link>
         </li>
+          
+          
+          </>
+         }
 
         {/* List item */}
         <li>

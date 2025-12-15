@@ -10,7 +10,7 @@ const axiosSecure = useAxiosSecure()
 const {data:profiles=[]}=useQuery({
     queryKey:['myProfiles',user?.email],
     queryFn:async ()=>{
-        const res = await axiosSecure.get(`/users?email=${user?.email}`)
+        const res = await axiosSecure.get(`/user?email=${user?.email}`)
         return res.data;
         
       }
@@ -42,9 +42,9 @@ const {data:profiles=[]}=useQuery({
           className="w-28 h-28 rounded-full object-cover border"
         />
         <div className="flex-1">
-          <h3 className="text-xl font-semibold">{profile.name}</h3>
-          <p className="text-gray-600 capitalize">{profile.role}</p>
-          <p className="text-gray-500">{profile.address}</p>
+          <h3 className="text-xl font-semibold">{profile?.name}</h3>
+          <p className="text-gray-600 capitalize">{profile?.role}</p>
+          <p className="text-gray-500">{profile?.address}</p>
         </div>
       </div>
 
@@ -54,17 +54,17 @@ const {data:profiles=[]}=useQuery({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p className="text-gray-500 text-sm">Full Name</p>
-            <p className="font-medium">{profile.name}</p>
+            <p className="font-medium">{profile?.name}</p>
           </div>
 
           <div>
             <p className="text-gray-500 text-sm">Email Address</p>
-            <p className="font-medium">{profile.email}</p>
+            <p className="font-medium">{profile?.email}</p>
           </div>
 
           <div>
             <p className="text-gray-500 text-sm">User Role</p>
-            <p className="font-medium capitalize">{profile.role}</p>
+            <p className="font-medium capitalize">{profile?.role}</p>
           </div>
 
           <div>

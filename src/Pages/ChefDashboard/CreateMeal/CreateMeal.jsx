@@ -5,12 +5,33 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { imageUpload } from '../../../utils';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const CreateMeal = () => {
   const axiosSecure = useAxiosSecure()
   
     const {user}=useAuth()
  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+const {data:profiles=[]}=useQuery({
+    queryKey:['myProfiles',user?.email],
+    queryFn:async ()=>{
+        const res = await axiosSecure.get(`/user?email=${user?.email}`)
+        return res.data;
+        
+      }
+    })
+    // console.log(profiles)
+  const profile = profiles[0] || {};
+
+
+
+
+
+
+
+
+
   const onSubmit = async (data) => {
     const{foodName,chefName,chefId,price,rating,ingredients,estimatedDeliveryTime,chefExperience,userEmail,foodImage}=data
     const imageFile = foodImage[0]; 
@@ -87,7 +108,7 @@ const CreateMeal = () => {
           <input
             {...register('chefId', { required: true })}
             placeholder="Enter Chef ID"
-            // defaultValue={chefId || ""}
+            value={profile.chefId}
             className="border p-2 rounded"
           />
           {errors.chefId && <span className="text-red-500 text-sm">Chef ID is required</span>}
