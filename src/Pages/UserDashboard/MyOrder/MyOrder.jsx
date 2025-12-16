@@ -21,7 +21,7 @@ return (
   <div>
     <h2 className="font-bold text-2xl">All My Orders: {orders.length}</h2>
 
-    <div className="grid gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {orders.map(order => 
         <MyOrderCard 
           key={order._id}

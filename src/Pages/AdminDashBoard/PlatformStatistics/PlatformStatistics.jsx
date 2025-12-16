@@ -12,14 +12,19 @@ const PlatformStatistics = () => {
 
         }
     })
-
+const statsArray = [
+  { title: 'Total Users', value: orderStatus.totalUsers },
+  { title: 'Orders Pending', value: orderStatus.pendingOrders },
+  { title: 'Orders Delivered', value: orderStatus.deliveredOrders },
+  { title: 'Total Payment Amount', value: orderStatus.totalPaymentAmount },
+];
     return (
         <div>
             <h2 className="text-3xl ">this is stat page</h2>
            <div className="stats shadow">
 
             {
-             orderStatus.map((stat)=><div key={stat._id} className="stat">
+             statsArray.map((stat)=><div key={stat._id} className="stat">
     <div className="stat-figure text-secondary">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +40,8 @@ const PlatformStatistics = () => {
         ></path>
       </svg>
     </div>
-    <div className="stat-title">Downloads</div>
-    <div className="stat-value">31K</div>
-    <div className="stat-desc">Jan 1st - Feb 1st</div>
+    <div className="stat-title text-xl font-bold">{stat.title}</div>
+    <div className="stat-value">{stat.value}</div>
   </div>)   
             }
   

@@ -6,12 +6,13 @@ import { MdCancel } from "react-icons/md";
 import { CiDeliveryTruck } from "react-icons/ci";
 
 import { TiTick } from "react-icons/ti";
+import { toast } from 'react-toastify';
 
 const OrderRequest = () => {
     const axiosSecure = useAxiosSecure()
     
 
-const {isLoading,data:orders=[]}=useQuery({
+const {isLoading,data:orders=[],refetch}=useQuery({
     queryKey:['orderRequest'],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/order`)
@@ -20,6 +21,30 @@ const {isLoading,data:orders=[]}=useQuery({
         
       }
     })
+
+const updateOrderStatus = (id,orderStatus)=>{
+  axiosSecure.patch(`/orders/${id}`,{orderStatus})
+  .then(res=>{
+    if(res.data.modifiedCount){
+      refetch()
+      toast(`Order has been ${orderStatus}`)
+    }
+  })
+}
+const handleAcceptOrder = id =>{
+  updateOrderStatus(id,'accepted')
+}
+const handleCancelOrder = id =>{
+  updateOrderStatus(id,'cancelled')
+}
+const handleDeliverOrder = id =>{
+  updateOrderStatus(id,'delivered')
+}
+
+
+
+
+
 
 if(isLoading){
     return <Loading></Loading>
@@ -58,19 +83,45 @@ if(isLoading){
         <td>{order.orderTime}</td>
         <td>{order.userAddress}</td>
         <td>{order.paymentStatus}</td>
-        <td className='flex gap-3'>
-            <button className='btn bg-red-700'><MdCancel />
-</button>
-            <button className='btn bg-green-600'><TiTick /></button>
-            <button className='btn bg-yellow-600'><CiDeliveryTruck />
-</button>
-        </td>
+         
+
+              <td className="flex gap-2">
+                {/* Cancel */}
+                <button
+                  disabled={order.orderStatus !== 'pending'}
+                  onClick={() => handleCancelOrder(order._id)}
+                  className="btn btn-sm btn-error"
+                >
+                  Cancel
+                </button>
+
+                {/* Accept */}
+                <button
+                  disabled={order.orderStatus !== 'pending'}
+                  onClick={() => handleAcceptOrder(order._id)}
+                  className="btn btn-sm btn-primary"
+                >
+                  Accept
+                </button>
+
+                {/* Deliver */}
+                <button
+                  disabled={order.orderStatus !== 'accepted'}
+                  onClick={() => handleDeliverOrder(order._id)}
+                  className="btn btn-sm btn-success"
+                >
+                  Deliver
+                </button>
+              </td>
       </tr>)
       }
       
       
     </tbody>
   </table>
+ {orders.length === 0 && (
+        <p className="text-center mt-4">No orders found</p>
+      )}
 </div>
             </div>
         </div>

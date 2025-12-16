@@ -7,8 +7,19 @@ const [searchParams]= useSearchParams()
 const sessionId = searchParams.get('session_id')
 useEffect(()=>{
     if(sessionId){
-       const res =  axios.post('http://localhost:3000/payment-success',{sessionId});
-    }
+const savePayment = async () => {
+        try {
+          const res = await axios.post(
+            'http://localhost:3000/payment-success',
+            { sessionId }
+          );
+          console.log('Payment updated:', res.data);
+        } catch (err) {
+          console.error('Payment update failed:', err);
+        }
+      };
+
+      savePayment();    }
 },[sessionId])
 
 

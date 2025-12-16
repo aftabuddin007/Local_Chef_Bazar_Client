@@ -9,7 +9,7 @@ const MyOrderCard = ({order}) => {
     // console.log(order)
 const handlePayment = async(order)=>{
     const paymentInfo = {
-        mealId:order._id,
+        orderId:order._id,
         mealName:order.mealName,
         price:Number(order.price),
         quantity:order.quantity,
@@ -28,7 +28,7 @@ const handlePayment = async(order)=>{
 
     return (
         <div>
-           <div className="min-h-screen bg-gray-50 p-4">
+           <div className=" bg-gray-50 p-4">
 
 
 
@@ -54,12 +54,13 @@ className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm"
 
 <div className="mt-3 pt-2 border-t text-right font-semibold text-gray-700">
 {/* PAY BUTTON */}
-{(order.orderStatus === "accepted" && order.paymentStatus === "Pending") && (
-<button onClick={()=>handlePayment(order)}
-className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
->
-Pay Now
-</button>
+{(order.orderStatus === "accepted" && order.paymentStatus === "pending") && (
+  <button
+    onClick={() => handlePayment(order)}
+    className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg cursor-pointer"
+  >
+    Pay Now
+  </button>
 )}
 
 
