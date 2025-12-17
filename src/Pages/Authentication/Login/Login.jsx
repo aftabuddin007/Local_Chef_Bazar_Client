@@ -27,6 +27,7 @@ navigate(from,{replace:true})
     })
     .catch(err=>{
         console.log(err)
+        toast.error('Invalid email or password. Please try again.')
         
     })
 
@@ -85,9 +86,7 @@ toast.error(err.message)
 }
           <span onClick={()=>setShow(!show)} className='absolute right-7 top-8 cursor-pointer z-50'>{show ? <FaRegEye />:<FaEyeSlash />}</span>
           </div>
-          {
-            // error && <p className='text-red-500 text-xs'>{error}</p>
-          }  
+          
           
             <button type='button' 
             // onClick={handleForgetPassword} 

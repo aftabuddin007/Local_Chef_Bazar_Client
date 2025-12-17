@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import Logo from "../../Shared/Logo/Logo";
 
 
 const Navbar = () => {
@@ -11,7 +12,7 @@ const handleLogout = ()=>{
 
 // console.log(user)
    const navLinkClass = ({isActive})=>
-  isActive?'text-[#872953] underline font-bold':'hover:text-[#872953] hover:underline ';
+  isActive?'text-[#f5bf42] underline font-bold':'hover:text-[#f5bf42] hover:underline ';
 
 
     return (
@@ -24,7 +25,7 @@ const handleLogout = ()=>{
       </div>
       <ul
         tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
         <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
       <li><NavLink to='/meals' className={navLinkClass}>Meals</NavLink></li>
       {
@@ -36,10 +37,12 @@ const handleLogout = ()=>{
       
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    
+    
+<Logo></Logo>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1 text-xl">
        <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
        <li><NavLink to='/meals'className={navLinkClass}> Meals</NavLink></li>
       {
@@ -62,14 +65,15 @@ const handleLogout = ()=>{
       </div>
       <ul
         tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3  w-52 p-2 shadow">
         <li>
           <a className="justify-between">
             Profile
-            <span className="badge">New</span>
+            <span className="badge px-2 py-1 bg-green-400">Active</span>
           </a>
         </li>
-        <li><a>Settings</a></li>
+        <p className="font-bold">Name: {user?.displayName}</p>
+        <p className="font-bold my-5">Email: {user?.email}</p>
         <button onClick={handleLogout} className="btn btn-primary">Logout</button>
       </ul>
     </div>:<Link to='/auth/login' className="btn btn-primary">Login</Link>}

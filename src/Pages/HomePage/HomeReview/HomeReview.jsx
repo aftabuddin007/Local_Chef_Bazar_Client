@@ -14,8 +14,8 @@ const HomeReview = ({reviewPromise}) => {
 
 
     return (
-        <div>
-            <h2 className='text-3xl font-bold text-center'>Our Customer Review</h2>
+        <div className='mb-10'>
+            <h2 className='text-3xl font-bold text-center my-10'>What Our Happy Customer Say?</h2>
 
             <Swiper
  effect={'coverflow'}

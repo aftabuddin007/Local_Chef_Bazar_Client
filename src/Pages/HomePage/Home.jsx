@@ -3,6 +3,8 @@ import RecentMeal from './RecentMeal/RecentMeal';
 
 import HomeReview from './HomeReview/HomeReview';
 import { useLoaderData } from 'react-router';
+import HeroBanner from './HeroBanner/HeroBanner';
+import WhyChoose from './WhyChoose/WhyChoose';
 
 const reviewPromise = fetch('http://localhost:3000/reviews')
 .then(res=>res.json())
@@ -12,7 +14,8 @@ const Home = () => {
     
     return (
         <div>
-            <h2 className="text-4xl font-bold">This is home</h2>
+            <HeroBanner></HeroBanner>
+            <WhyChoose></WhyChoose>
             <RecentMeal recentMealPromise={recentMealPromise}></RecentMeal>
             <HomeReview reviewPromise={reviewPromise}></HomeReview>
         </div>

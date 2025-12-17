@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+
 import { imageUpload } from '../../../utils';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -13,7 +13,7 @@ const CreateMeal = () => {
     const {user}=useAuth()
  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-const {data:profiles=[]}=useQuery({
+const {data:profiles=[],refetch}=useQuery({
     queryKey:['myProfiles',user?.email],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/user?email=${user?.email}`)
@@ -33,7 +33,7 @@ const {data:profiles=[]}=useQuery({
 
 
   const onSubmit = async (data) => {
-    const{foodName,chefName,chefId,price,rating,ingredients,estimatedDeliveryTime,chefExperience,userEmail,foodImage}=data
+    const{foodName,chefName,chefId,price,rating,ingredients,estimatedDeliveryTime,chefExperience,userEmail,foodImage,deliveryArea}=data
     const imageFile = foodImage[0]; 
     // console.log(data)
     try {
@@ -50,6 +50,7 @@ const {data:profiles=[]}=useQuery({
         ingredients: ingredients.split(',').map(item => item.trim()),
         estimatedDeliveryTime,
         chefExperience,
+        deliveryArea,
         userEmail,
         foodImage: imageUrl, 
         createdAt:new Date()
@@ -58,6 +59,7 @@ const {data:profiles=[]}=useQuery({
       const res = await axiosSecure.post("/meals",mealData); 
 
       if (res.data.success) {
+        refetch()
         toast.success("Meal added successfully!");
         reset();
       }
@@ -190,7 +192,17 @@ const {data:profiles=[]}=useQuery({
           />
           {errors.chefExperience && <span className="text-red-500 text-sm">This field is required</span>}
         </div>
-
+{/* delivery Area */}
+ <div className="flex flex-col md:col-span-2">
+          <label className="mb-1 font-semibold">Delivery Area</label>
+          <input
+            {...register('deliveryArea', { required: true })}
+            placeholder="Enter Delivery Area"
+            className="border p-2 rounded"
+            
+          />
+          {errors.deliveryArea && <span className="text-red-500 text-sm">Delivery Area is required</span>}
+        </div>
         {/* User Email */}
         <div className="flex flex-col md:col-span-2">
           <label className="mb-1 font-semibold">User Email</label>
