@@ -39,8 +39,7 @@ import PrivateRoute from './PrivateRoute';
     },{
         path:'/meals',
         element:<Meals></Meals>,
-        loader:()=>fetch('http://localhost:3000/meals'),
-        hydrateFallbackElement:<Loading></Loading>
+       
     },{
         path:'/meal-details/:id',
         element:<MealDetails></MealDetails>
