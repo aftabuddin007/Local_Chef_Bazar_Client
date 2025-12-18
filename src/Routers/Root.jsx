@@ -22,6 +22,8 @@ import OrderRequest from '../Pages/ChefDashboard/OrderRequest/OrderRequest';
 import ManageRequest from '../Pages/AdminDashBoard/ManageRequest/ManageRequest';
 import ManageUser from '../Pages/AdminDashBoard/Manageuser/ManageUser';
 import PlatformStatistics from '../Pages/AdminDashBoard/PlatformStatistics/PlatformStatistics';
+import Error from '../Shared/Error/Error';
+import PrivateRoute from './PrivateRoute';
 
 
     const router = createBrowserRouter([
@@ -48,7 +50,9 @@ import PlatformStatistics from '../Pages/AdminDashBoard/PlatformStatistics/Platf
     }]
 },{
 path:'/dashboard',
-element:<DashboardLayout></DashboardLayout>,
+element:<PrivateRoute>
+    <DashboardLayout></DashboardLayout>
+</PrivateRoute> ,
 children:[
     {
         path:'myProfile',
@@ -111,6 +115,9 @@ children:[
             element:<Register></Register>
         }
     ]
+},{
+    path:'/*',
+    element:<Error></Error>
 }
     ])
    

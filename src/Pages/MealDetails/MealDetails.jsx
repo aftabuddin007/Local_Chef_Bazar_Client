@@ -138,7 +138,7 @@ console.error(err);
             <p><span className="font-semibold">Estimated Delivery Time:</span> {details.
 estimatedDeliveryTime
 }</p>
-            <p><span className="font-semibold">Chef Experience:</span> {details.chefExperience} </p>
+            <p><span className="font-semibold">Chef Experience:</span> {details.chefExperience} Years </p>
             <p><span className="font-semibold">Chef ID:</span> {details.chefId}</p>
           </div>
 

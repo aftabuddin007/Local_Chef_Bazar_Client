@@ -53,6 +53,8 @@ Swal.fire({
     return (
         <div>
            <div className="overflow-x-auto">
+              <h3 className="text-2xl font-bold text-center my-10">My Favorite Meal</h3>
+
   <table className="table">
     {/* head */}
     <thead>
@@ -71,7 +73,7 @@ Swal.fire({
         <th>{i+1}</th>
         <td>{favorite.mealName}</td>
         <td>{favorite.chefName}</td>
-        <td>{favorite.price}</td>
+        <td>${favorite.price}</td>
         <td>{favorite.addedTime}</td>
         <td>
             <button onClick={()=>handleMealDelete(favorite._id)} className='btn btn-secondary'>Delete</button>

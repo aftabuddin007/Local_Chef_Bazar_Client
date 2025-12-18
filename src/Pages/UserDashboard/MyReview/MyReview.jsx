@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { CiStar } from "react-icons/ci";
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import Loading from '../../../Components/Loading/Loading';
 // import { toast } from 'react-toastify';
 const MyReview = () => {
      const [selectedReview, setSelectedReview] = useState(null);
@@ -12,10 +13,12 @@ const {register, handleSubmit, reset} = useForm()
 
         const {user} = useAuth()
     const axiosSecure = useAxiosSecure()
-const {data:reviews=[],refetch}=useQuery({
+const {data:reviews=[],refetch,isLoading}=useQuery({
     queryKey:['myReviews',user?.email],
+   
     queryFn:async ()=>{
-        const res = await axiosSecure.get(`/reviews?email=${user?.email}`)
+        const res = await axiosSecure.get(`/review?email=${user?.email}`)
+        console.log(res.data)
         return res.data;
     }
 })
@@ -70,12 +73,15 @@ const onSubmit = async (data) => {
     document.getElementById('editModal').showModal();
   };
 
-
+if(isLoading){
+  return <Loading></Loading>
+}
 
 
     return (
         <div>
             <div className="overflow-x-auto">
+              <h3 className="text-2xl font-bold text-center my-10">My Review</h3>
   <table className="table">
     {/* head */}
     <thead>
@@ -94,14 +100,16 @@ const onSubmit = async (data) => {
         <th>{i+1}</th>
         <td>{review.mealName}</td>
         <td className='flex items-center font-bold text-yellow-500'>{review.rating} <CiStar /></td>
-        <td>{review.comment}</td>
+        <td className="max-w-xs truncate" title={review.comment}>
+  {review.comment.split(" ").slice(0, 4).join(" ")}
+  {review.comment.split(" ").length > 4 ? "..." : ""}
+</td>
+
         <td>{review.date}</td>
         <td>
             <div className=''>
-                                <button className="btn btn-primary mr-2" onClick={() => openEditModal(review)}>Edit</button>
-
-
-                <button onClick={()=>handleReviewDelete(review._id)} className='btn sm btn-secondary'> Delete</button>
+        <button className="btn btn-primary mr-2" onClick={() => openEditModal(review)}>Edit</button>
+        <button onClick={()=>handleReviewDelete(review._id)} className='btn sm btn-secondary'> Delete</button>
             </div>
         </td>
         

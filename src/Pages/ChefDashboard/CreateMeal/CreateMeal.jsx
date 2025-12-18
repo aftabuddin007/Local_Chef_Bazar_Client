@@ -99,7 +99,7 @@ const {data:profiles=[],refetch}=useQuery({
             {...register('chefName', { required: true })}
             placeholder="Enter chef name"
             className="border p-2 rounded"
-            value={user?.displayName}
+            defaultValue={user?.displayName}
           />
           {errors.chefName && <span className="text-red-500 text-sm">Chef Name is required</span>}
         </div>
@@ -110,10 +110,10 @@ const {data:profiles=[],refetch}=useQuery({
           <input
             {...register('chefId', { required: true })}
             placeholder="Enter Chef ID"
-            value={profile.chefId}
+            defaultValue={profile.chefId}
             className="border p-2 rounded"
           />
-          {errors.chefId && <span className="text-red-500 text-sm">Chef ID is required</span>}
+          
         </div>
 
         {/* Food Image */}
@@ -207,7 +207,7 @@ const {data:profiles=[],refetch}=useQuery({
         <div className="flex flex-col md:col-span-2">
           <label className="mb-1 font-semibold">User Email</label>
           <input  {...register('userEmail', { required: true })}
-            value={user?.email}
+            defaultValue={user?.email}
             readOnly
             className="border p-2 rounded bg-gray-100"
           />

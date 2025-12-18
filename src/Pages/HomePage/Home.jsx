@@ -15,8 +15,8 @@ const Home = () => {
     return (
         <div>
             <HeroBanner></HeroBanner>
-            <WhyChoose></WhyChoose>
             <RecentMeal recentMealPromise={recentMealPromise}></RecentMeal>
+            <WhyChoose></WhyChoose>
             <HomeReview reviewPromise={reviewPromise}></HomeReview>
         </div>
     );

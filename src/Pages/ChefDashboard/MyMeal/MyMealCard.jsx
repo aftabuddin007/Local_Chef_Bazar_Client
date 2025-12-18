@@ -27,7 +27,7 @@ axiosSecure.delete(`/meal/${id}`)
     refetch()
 Swal.fire({
       title: "Deleted!",
-      text: "Your Favorite Meal has been deleted.",
+      text: "Your listing Meal has been deleted.",
       icon: "success"
     });
    }
@@ -79,10 +79,10 @@ Swal.fire({
 
         {/* Action Buttons */}
         <div className="flex justify-between">
-          <Link to={`/dashboard/update-meal/${meal._id}`} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+          <Link to={`/dashboard/update-meal/${meal._id}`} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg cursor-pointer">
             Update
           </Link>
-          <button onClick={()=>handleMealDelete(meal._id)} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+          <button onClick={()=>handleMealDelete(meal._id)} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg cursor-pointer">
             Delete
           </button>
         </div>

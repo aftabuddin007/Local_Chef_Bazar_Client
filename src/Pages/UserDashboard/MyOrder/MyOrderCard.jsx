@@ -43,7 +43,7 @@ className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm"
 
 <div className="text-sm space-y-1">
 <p><span className="font-medium">Status:</span> {order.orderStatus}</p>
-<p><span className="font-medium">Price:</span> ৳{order.price}</p>
+<p><span className="font-medium">Price:</span> ${order.price}</p>
 <p><span className="font-medium">Quantity:</span> {order.quantity}</p>
 <p><span className="font-medium">OrderTime:</span> {order.orderTime}</p>
 <p><span className="font-medium">Chef:</span> {order.chefName}</p>
@@ -54,7 +54,7 @@ className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm"
 
 <div className="mt-3 pt-2 border-t text-right font-semibold text-gray-700">
 {/* PAY BUTTON */}
-{(order.orderStatus === "accepted" && order.paymentStatus === "pending") && (
+{(order.orderStatus === "accepted" && order.paymentStatus === "Pending") && (
   <button
     onClick={() => handlePayment(order)}
     className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg cursor-pointer"
