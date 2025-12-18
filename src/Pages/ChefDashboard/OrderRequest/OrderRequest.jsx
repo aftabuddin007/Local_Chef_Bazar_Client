@@ -16,7 +16,7 @@ const {isLoading,data:orders=[],refetch}=useQuery({
     queryKey:['orderRequest'],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/order`)
-        console.log(res.data)
+        // console.log(res.data)
         return res.data;
         
       }

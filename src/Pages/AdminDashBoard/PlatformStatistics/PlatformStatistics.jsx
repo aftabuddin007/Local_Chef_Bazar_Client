@@ -96,7 +96,8 @@ if(isLoading){
   </div>
 <div className='mt-10'>
   <h3 className="font-bold text-xl">Order Status Distribution</h3>
-   <PieChart style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 2 }} responsive>
+   
+    <PieChart style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 2 }} responsive>
       <Pie
         dataKey="value"
         startAngle={180}
@@ -112,6 +113,7 @@ if(isLoading){
     <Legend></Legend>
     <Tooltip></Tooltip>
     </PieChart>
+  
 </div>
   </div> 
         </div>

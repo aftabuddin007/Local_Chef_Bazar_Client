@@ -24,6 +24,8 @@ import ManageUser from '../Pages/AdminDashBoard/Manageuser/ManageUser';
 import PlatformStatistics from '../Pages/AdminDashBoard/PlatformStatistics/PlatformStatistics';
 import Error from '../Shared/Error/Error';
 import PrivateRoute from './PrivateRoute';
+import ChefRoute from './ChefRoute';
+import AdminRoute from './AdminRoute';
 
 
     const router = createBrowserRouter([
@@ -55,7 +57,9 @@ element:<PrivateRoute>
 children:[
     {
         path:'myProfile',
-        element:<MyProfile></MyProfile>
+        element:<PrivateRoute>
+            <MyProfile></MyProfile>
+        </PrivateRoute>
     },
     {
         path:'myOrder',
@@ -76,25 +80,42 @@ children:[
         element:<CancelPayment></CancelPayment>
     },{
         path:'create-meal',
-        element:<CreateMeal></CreateMeal>
+        element:<ChefRoute>
+            <CreateMeal></CreateMeal>
+        </ChefRoute>
     },{
         path:'my-meal',
-        element:<MyMeal></MyMeal>
+        element:<ChefRoute>
+
+            <MyMeal></MyMeal>
+        </ChefRoute>
     },{
         path:'update-meal/:id',
-        element:<UpdateMeal></UpdateMeal>
+        element:<ChefRoute>
+            <UpdateMeal></UpdateMeal>
+        </ChefRoute>
     },{
         path:'order-request',
-        element:<OrderRequest></OrderRequest>
+        element:<ChefRoute>
+            <OrderRequest></OrderRequest>
+        </ChefRoute>
     },{
         path:'manage-request',
-        element:<ManageRequest></ManageRequest>
+        element:<AdminRoute>
+
+            <ManageRequest></ManageRequest>
+        </AdminRoute>
     },{
         path:'manage-user',
-        element:<ManageUser></ManageUser>
+        element:<AdminRoute>
+
+            <ManageUser></ManageUser>
+        </AdminRoute>
     },{
         path:'platform-statistics',
-        element:<PlatformStatistics></PlatformStatistics>
+        element:<AdminRoute>
+            <PlatformStatistics></PlatformStatistics>
+        </AdminRoute>
     }
 ]
 }

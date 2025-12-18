@@ -7,17 +7,27 @@ import Loading from '../../Components/Loading/Loading';
 import { useState } from 'react';
 
 const Meals = () => {
- 
+ const [sort, setSort] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 10;
  const axiosSecure = useAxiosSecure()
-  const [sort, setSort] = useState('');
+  
 const {data:data=[],isLoading}=useQuery({
-    queryKey:['meals',sort],
+    queryKey:['meals',sort, currentPage],
     queryFn:async ()=>{
-        const res = await axiosSecure.get(`/meals?sort=${sort}`)
+        const res = await axiosSecure.get(`/meals?sort=${sort}&limit=${itemsPerPage}&skip=${currentPage * itemsPerPage}`)
         
         return res.data;
     }
 })
+const {data:countData={}}=useQuery({
+ queryKey:['meals-count'],
+ queryFn:async()=>{
+    const res = await axiosSecure.get('/meals-count');
+      return res.data;
+ }
+})
+const totalPages = Math.ceil((countData.count || 0) / itemsPerPage);
     if(isLoading){
         return <Loading></Loading>
     }
@@ -27,7 +37,12 @@ const {data:data=[],isLoading}=useQuery({
              <div className="text-right px-10">
         <select
           defaultValue="sort"
-          onChange={(e) => setSort(e.target.value)}   
+          onChange={(e) => {
+          setSort(e.target.value);
+            setCurrentPage(0);
+            }}   
+          
+
           className="select select-sm"
         >
           <option value="sort" disabled>
@@ -42,7 +57,19 @@ const {data:data=[],isLoading}=useQuery({
             data.map(food=><MealCard key={food._id} food={food}></MealCard>)
         }
             </div>
-
+ <div className="flex justify-center gap-2 mb-20">
+        {[...Array(totalPages).keys()].map(page => (
+          <button
+            key={page}
+            onClick={() => setCurrentPage(page)}
+            className={`btn btn-sm ${
+              currentPage === page ? 'btn-primary' : 'btn-outline'
+            }`}
+          >
+            {page + 1}
+          </button>
+        ))}
+      </div>
         </div>
     );
 };
