@@ -1,19 +1,16 @@
 1. Project Title
-
-###LocalChefBazar
-
-# FoodBazar
+### LocalChefBazar
 
 2. Description / Purpose
 
-FoodBazar is a food delivery platform built with React, Node.js, and MongoDB. Users can browse meals, place orders, submit reviews, and favorite their favorite meals. Admins and chefs have separate dashboards for managing the platform.
+LocalChefBazar is a food delivery platform built with React, Node.js, and MongoDB. Users can browse meals, place orders, submit reviews, and favorite their favorite meals. Admins and chefs have separate dashboards for managing the platform.
 
 3. Live Demo URL
 
 
 
 ## Live Demo
-[https://localchefbazar-roan.vercel.app](https://localchefbazar-roan.vercel.app)
+[https://localchefbazar1110.netlify.app/](https://localchefbazar1110.netlify.app/)
 
 4. Features
 
