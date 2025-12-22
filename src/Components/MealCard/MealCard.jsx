@@ -15,7 +15,7 @@ const MealCard = ({food}) => {
   } = food;
     return (
         <div>
-             <div className="bg-white rounded-xl shadow-md p-4 w-72 hover:shadow-lg transition duration-300">
+             <div className="bg-white rounded-xl shadow-md sm:p-4 sm:w-72 hover:shadow-lg transition duration-300">
       {/* Food Image */}
       <div className="w-full h-40 overflow-hidden rounded-lg">
         <img
@@ -50,7 +50,7 @@ const MealCard = ({food}) => {
       </div>
 
       {/* Button */}
-      <Link to={`/meal-details/${_id}`} className="w-full btn mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+      <Link to={`/meal-details/${_id}`} className="w-full btn mt-3 btn-primary text-white py-2 rounded-lg hover:bg-blue-700 transition">
         See Details
       </Link>
     </div>

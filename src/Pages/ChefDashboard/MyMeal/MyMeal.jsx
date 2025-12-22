@@ -24,6 +24,7 @@ if(isLoading){
         <div >
            <div className="p-4">
       <h1 className="text-2xl font-bold  text-center my-15">My Meals</h1>
+  <title>LocalChefBazar My Meal</title>
 
       {/* Grid Layout */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

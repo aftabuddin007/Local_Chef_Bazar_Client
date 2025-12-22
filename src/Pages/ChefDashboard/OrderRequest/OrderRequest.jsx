@@ -52,6 +52,8 @@ if(isLoading){
 
     return (
         <div>
+  <title>LocalChefBazar Order Request</title>
+
             <h2 className="text-3xl font-bold">Your {orders.length} order request </h2>
             <div>
                 <div className="overflow-x-auto">
@@ -73,7 +75,7 @@ if(isLoading){
     </thead>
     <tbody>
       {
-        orders.map((order,i)=><tr>
+        orders.map((order,i)=><tr key={order._id}>
         <th>{i+1}</th>
         <td>{order.mealName}</td>
         <td>${order.price}</td>

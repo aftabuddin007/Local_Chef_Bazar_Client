@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { imageUpload } from '../../../utils';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../Components/Loading/Loading';
 
 const CreateMeal = () => {
   const axiosSecure = useAxiosSecure()
@@ -13,7 +14,7 @@ const CreateMeal = () => {
     const {user}=useAuth()
  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-const {data:profiles=[],refetch}=useQuery({
+const {data:profiles=[],refetch,isLoading}=useQuery({
     queryKey:['myProfiles',user?.email],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/user?email=${user?.email}`)
@@ -69,17 +70,20 @@ const {data:profiles=[],refetch}=useQuery({
     }
   };
 
-
+if(isLoading){
+  return <Loading></Loading>
+}
 
 
     return (
         <div>
             <div className="max-w-3xl mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">Create Meal</h2>
+      <h2 className="text-4xl font-bold mb-6 text-center my-10">Create Meal</h2>
+  <title>LocalChefBazar Create Meal</title>
 
       <form
        onSubmit={handleSubmit(onSubmit)} 
-       className="grid grid-cols-1 md:grid-cols-2 gap-4">
+       className="grid grid-cols-1 md:grid-cols-2 gap-4 border-2 p-6 rounded-lg shadow-lg bg-white">
 
         {/* Food Name */}
         <div className="flex flex-col">
@@ -100,6 +104,7 @@ const {data:profiles=[],refetch}=useQuery({
             placeholder="Enter chef name"
             className="border p-2 rounded"
             defaultValue={user?.displayName}
+            readOnly
           />
           {errors.chefName && <span className="text-red-500 text-sm">Chef Name is required</span>}
         </div>
@@ -112,6 +117,7 @@ const {data:profiles=[],refetch}=useQuery({
             placeholder="Enter Chef ID"
             defaultValue={profile.chefId}
             className="border p-2 rounded"
+            readOnly
           />
           
         </div>
@@ -217,7 +223,7 @@ const {data:profiles=[],refetch}=useQuery({
         <div className="md:col-span-2 flex justify-center">
           <button
             type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-blue-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700 transition"
           >
             Add Meal
           </button>

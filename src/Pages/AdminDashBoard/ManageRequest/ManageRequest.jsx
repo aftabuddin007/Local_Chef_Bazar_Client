@@ -31,14 +31,16 @@ axiosSecure.patch(`/request/${id}`,updateInfo)
 })}
     const handleAccept = (id)=>{
 updateUserStatus(id,'approved')
-// toast.success('accepted')
+
     }
     const handleReject = (id)=>{
 updateUserStatus(id,'rejected')
-// toast.success('rejected')
+
     }
     return (
         <div>
+  <title>LocalChefBazar Manage Request</title>
+
             <h2 className="text-3xl font-bold">Total Request Pending {requests.length}</h2>
             <table className="table">
     {/* head */}

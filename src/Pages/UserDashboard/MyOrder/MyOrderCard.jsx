@@ -18,7 +18,7 @@ const handlePayment = async(order)=>{
 
     }
     // console.log(paymentInfo)
-    const res = await axios.post('http://localhost:3000/create-checkout-session',paymentInfo)
+    const res = await axios.post('https://localchefbazar-roan.vercel.app/create-checkout-session',paymentInfo)
     window.location.href=res.data.url
     // console.log(res.data.url)
 
@@ -27,15 +27,15 @@ const handlePayment = async(order)=>{
 
 
     return (
-        <div>
-           <div className=" bg-gray-50 p-4">
+        <div className='mb-5'>
+           <div className=" bg-gray-50 p-4  ">
 
 
 
 
 <div
 key={order.id}
-className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm"
+className="bg-white p-4 rounded-xl  border-gray-200 shadow-sm border-4"
 >
 <h2 className="text-lg font-semibold">{order.mealName}</h2>
 <p className="text-sm text-gray-500 mb-2">Order ID: {order._id}</p>
@@ -54,7 +54,7 @@ className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm"
 
 <div className="mt-3 pt-2 border-t text-right font-semibold text-gray-700">
 {/* PAY BUTTON */}
-{(order.orderStatus === "accepted" && order.paymentStatus === "Pending") && (
+{(order.orderStatus === "accepted" && order.paymentStatus === "pending") && (
   <button
     onClick={() => handlePayment(order)}
     className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg cursor-pointer"

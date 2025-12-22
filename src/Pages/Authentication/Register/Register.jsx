@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { imageUpload } from '../../../utils';
 import Loading from '../../../Components/Loading/Loading';
 import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
+import Logo from '../../../Shared/Logo/Logo';
 const Register = () => {
     const [show,setShow]=useState(false)
     const {register,
@@ -24,7 +25,7 @@ const axiosSecure = useAxiosSecure()
 
 
 const handleRegistration = async (data)=>{
-    const {name,email,image,password,confirmPassword,address}=data
+    const {name,email,image,password,address}=data
     const imageFile = image[0]
     // console.log(data)
     try {
@@ -82,27 +83,27 @@ if(loading){
 
 
     return (
-        <div className='my-10'>
-             <div>
-                    <title>PawMart - Sign Up</title>
+        <div className=' min-h-screen flex items-center justify-center 
+bg-[url(https://i.ibb.co.com/Pv4wB7GS/252811-melbourne-restaurants-LAY.png)] bg-cover bg-center bg-no-repeat relative'>
+             <div className=''>
+                    <title>LocalChefBazar- Sign Up</title>
+  <div className="absolute inset-0 bg-black/50"></div>
 
-             <div>
-           <div>
+             <div className='my-10'>
+           <div className='relative z-10 w-full max-w-sm 
+  bg-white/25 backdrop-blur-xl
+  border border-white/30
+  shadow-[0_25px_70px_rgba(0,0,0,0.45)]
+  rounded-2xl '>
                 <form 
                 onSubmit={handleSubmit(handleRegistration)}
-                 className='items-center justify-center flex bg-gradient-to-t from-[#cfd9df] to-[#e2ebf0]min-h-screen'>
+                 className='items-center justify-center flex  '>
 
                            <div className="card  w-full max-w-sm shrink-0 shadow-2xl">
-                 <div className="card-body bg-gradient-to-t from-[#30cfd0] to-[#330867]">
-                   <div  className='mb-3 gap-2 flex justify-center'> 
-                          
-                              <p className="flex justify-center  text-xl font-bold "><img src="https://i.ibb.co.com/5gShN8km/images-1-removebg-preview.png" alt="" className='h-10 w-10' /> 
-                              <h1 class="text-2xl font-extrabold text-purple-500 font-[Comic_Sans_MS] tracking-wide">
-                            <span class="italic">Paw</span><span class="not-italic">Mart</span>
-                          </h1>
-                              </p>
-                              </div>
-                   <h1 className="text-3xl font-bold text-center">Create your account</h1>
+                 <div className="card-body  relative z-10 card w-full max-w-sm shadow-2xl rounded-2xl">
+                   
+                              <Logo></Logo>
+                   <h1 className="text-3xl font-bold text-center text-white mb-4">Create your Account</h1>
                    <fieldset className="fieldset">
                     {/* name */}
                      <label className="label font-bold">Name</label>

@@ -19,7 +19,9 @@ const {data:orders=[]}=useQuery({
 
 return (
   <div>
-    <h2 className="font-bold text-2xl">All My Orders: {orders.length}</h2>
+  <title>LocalChefBazar My Order</title>
+
+    <h2 className="font-bold text-3xl text-center my-10"> My Orders</h2>
 
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {orders.map(order => 

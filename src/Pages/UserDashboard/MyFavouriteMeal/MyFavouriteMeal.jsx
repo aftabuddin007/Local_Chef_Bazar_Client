@@ -52,8 +52,10 @@ Swal.fire({
 
     return (
         <div>
+  <title>LocalChefBazar My Favorite Meal</title>
+
            <div className="overflow-x-auto">
-              <h3 className="text-2xl font-bold text-center my-10">My Favorite Meal</h3>
+              <h3 className="text-3xl font-bold text-center my-10">My Favorite Meal</h3>
 
   <table className="table">
     {/* head */}

@@ -1,94 +1,36 @@
 import React, { use } from 'react';
 import Review from '../Review/Review';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import Marquee from "react-fast-marquee"; 
 
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-const HomeReview = ({reviewPromise}) => {
-    const reviews = use(reviewPromise)
-    
- 
-
-
+const HomeReview = ({ reviewPromise }) => {
+    const reviews = use(reviewPromise);
 
     return (
-        <div className='mb-10'>
-            <h2 className='text-3xl font-bold text-center my-10'>What Our Happy Customer Say?</h2>
+        <div className='mb-10 bg-gray-50 py-10'>
+            <h2 className='text-3xl font-bold text-center mb-12 text-slate-800'>
+                What Our Happy Customers Say?
+            </h2>
 
-            <Swiper
- effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={3}
-        coverflowEffect={{
-            loop:true,
-            spaceBetween:30,
-          rotate: 30,
-          stretch: '50%',
-          depth: 200,
-          modifier: 1,
-          scale:0.75,
-          slideShadows: true,
-            
-       
-         
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination,Autoplay]}
-        className="mySwiper"
-autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-            > 
-{/* {
-    reviews.map(revie=><SwiperSlide key={revie.id}>
-    <ReviewCard revie={revie}></ReviewCard>
-        </SwiperSlide>)
-} */}
-{
-      reviews.map(r=><SwiperSlide key={r.id}>
-<Review 
-      key={r._id}
-      reviewerName={r.reviewerName}
-      reviewerImage={r.reviewerImage}
-      rating={r.rating}
-      comment={r.comment}
-      date={r.date}
-      ></Review>
-      </SwiperSlide>
-       )
-    }
-
-
-
-
-
-
-            </Swiper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          
+            <Marquee 
+                pauseOnHover={true} 
+                speed={100} 
+                gradient={true} 
+                gradientColor="#f9fafb" 
+                gradientWidth={100}
+            >
+                {reviews.map((r, index) => (
+                    <div key={index} className="mx-4 w-[320px] md:w-[450px]">
+                        <Review 
+                            reviewerName={r.reviewerName}
+                            reviewerImage={r.reviewerImage}
+                            rating={r.rating}
+                            comment={r.comment}
+                            date={r.date}
+                        />
+                    </div>
+                ))}
+            </Marquee>
         </div>
     );
 };

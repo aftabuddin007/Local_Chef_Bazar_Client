@@ -7,17 +7,18 @@ import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router';
 import Loading from '../../../Components/Loading/Loading';
+import useAxiosSecure from '../../../Contexts/AuthContext/useAxiosSecure';
 
 const UpdateMeal = () => {
     const navigate = useNavigate()
     const {id}=useParams()
      const {user}=useAuth()
  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
+const axiosSecure = useAxiosSecure()
 const {data:details,isLoading, refetch} = useQuery({
 queryKey:['meal',id],
 queryFn:async ()=>{
-  const res = await axios.get(`http://localhost:3000/meals/${id}`)
+  const res = await axios.get(`https://localchefbazar-roan.vercel.app/meals/${id}`)
   return res.data.result
 // console.log(res.data.result)
 }
@@ -66,7 +67,7 @@ useEffect(() => {
                 foodImage: imageUrl,
             };
 
-            const res = await axios.put(`http://localhost:3000/meals/${id}`, updatedMeal);
+            const res = await axiosSecure.put(`/meals/${id}`, updatedMeal);
 
             if (res.data.modifiedCount > 0) {
                 toast.success("Meal updated successfully!");
@@ -84,6 +85,8 @@ if(isLoading){
 }
     return (
         <div>
+  <title>LocalChefBazar Update Meal</title>
+
              <div className="max-w-3xl mx-auto p-4">
       <h2 className="text-3xl font-bold mb-6 text-center">Update Meal</h2>
 
@@ -109,7 +112,7 @@ if(isLoading){
             {...register('chefName', { required: true })}
             placeholder="Enter chef name"
             className="border p-2 rounded"
-            value={user?.displayName}
+            
           />
           {errors.chefName && <span className="text-red-500 text-sm">Chef Name is required</span>}
         </div>
@@ -120,10 +123,10 @@ if(isLoading){
           <input
             {...register('chefId', { required: true })}
             placeholder="Enter Chef ID"
-            // defaultValue={chefId || ""}
+           
             className="border p-2 rounded"
           />
-          {errors.chefId && <span className="text-red-500 text-sm">Chef ID is required</span>}
+         
         </div>
 
         {/* Food Image */}
@@ -210,7 +213,7 @@ if(isLoading){
         <div className="flex flex-col md:col-span-2">
           <label className="mb-1 font-semibold">User Email</label>
           <input  {...register('userEmail', { required: true })}
-            value={user?.email}
+            
             readOnly
             className="border p-2 rounded bg-gray-100"
           />

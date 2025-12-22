@@ -45,6 +45,8 @@ if(isLoading){
 
     return (
         <div>
+  <title>LocalChefBazar Manage User</title>
+
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}

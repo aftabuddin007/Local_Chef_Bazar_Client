@@ -17,7 +17,7 @@ const OrderForm = () => {
     const {data:meal,isLoading} = useQuery({
         queryKey:['meals-order',id],
         queryFn:async()=>{
-            const res = await axios.get(`http://localhost:3000/meals/${id}`);
+            const res = await axios.get(`https://localchefbazar-roan.vercel.app/meals/${id}`);
             // console.log(res.data.result)
       return res.data.result;
         }
@@ -96,6 +96,7 @@ return <Loading></Loading>
 
     return (
        <div>
+  <title>LocalChefBazar Order Meal</title>
 
     <div className="w-full min-h-screen flex items-center justify-center bg-gray-100 p-6">
       <form
@@ -189,7 +190,7 @@ return <Loading></Loading>
         {/* Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
+          className="w-full btn-primary cursor-pointer text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
         >
           Confirm Order
         </button>

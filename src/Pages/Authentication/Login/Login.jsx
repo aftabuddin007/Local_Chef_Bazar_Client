@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import Loading from '../../../Components/Loading/Loading';
+import Logo from '../../../Shared/Logo/Logo';
 
 const Login = () => {
     const [show,setShow]=useState(false)
@@ -20,7 +21,7 @@ const handleLogin=(data)=>{
     // console.log(data)
     loginInUser(data.email,data.password)
     .then(res=>{
-        console.log(res)
+        // console.log(res)
         toast.success('Signin Successful')
 navigate(from,{replace:true})
 
@@ -49,20 +50,18 @@ toast.error(err.message)
         
     return (
         <div>
-            <div className='items-center justify-center flex   min-h-screen  bg-gradient-to-t from-[#cfd9df] to-[#e2ebf0] h-screen w-full'>
-                        <title>PawMart - Login</title>
-
+            <div className='min-h-screen flex items-center justify-center 
+bg-[url(https://i.ibb.co.com/ksGkhrR9/food-photography-background-iyvy.png)] bg-cover bg-center bg-no-repeat relative  '>
+  <title>LocalChefBazar Login</title>
+  <div className="absolute inset-0 bg-black/50"></div>
                 <div className="card  w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body bg-gradient-to-t from-[#30cfd0] to-[#330867]">
-        <div  className='mb-3 gap-2 flex justify-center'> 
-                          
-                              <p className="flex justify-center  text-xl font-bold "><img src="https://i.ibb.co.com/5gShN8km/images-1-removebg-preview.png" alt="" className='h-10 w-10' /> 
-                              <h1 class="text-2xl font-extrabold text-purple-500 font-[Comic_Sans_MS] tracking-wide">
-                            <span className="italic">Paw</span><span className="not-italic">Mart</span>
-                          </h1>
-                              </p>
-                              </div>
-        <h1 className="text-3xl font-bold text-center">Login Your Account</h1>
+      <div className="card-body relative z-10 card w-full max-w-sm rounded-2xl bg-white/25 backdrop-blur-xl
+  border border-white/30
+  shadow-[0_25px_70px_rgba(0,0,0,0.45)]
+  ">
+
+                              <Logo></Logo>
+        <h1 className="text-3xl font-bold text-center ">Login Your Account</h1>
         <form  
         onSubmit={handleSubmit(handleLogin)}
          className=''>

@@ -32,9 +32,12 @@ const totalPages = Math.ceil((countData.count || 0) / itemsPerPage);
         return <Loading></Loading>
     }
     return (
-        <div className='max-w-7xl mx-auto'>
-            <h2 className='text-4xl font-bold text-center my-10'>All Meals</h2>
-             <div className="text-right px-10">
+        <div className='bg-[#FFF8F0]'>
+  <title>LocalChefBazar All Meals</title>
+
+          <div className='max-w-7xl mx-auto'>
+            <h2 className='text-4xl font-bold text-center py-10'>All Meals</h2>
+             <div className="text-right px-20">
         <select
           defaultValue="sort"
           onChange={(e) => {
@@ -70,6 +73,7 @@ const totalPages = Math.ceil((countData.count || 0) / itemsPerPage);
           </button>
         ))}
       </div>
+        </div>
         </div>
     );
 };

@@ -29,10 +29,7 @@ const barChartData = [
   }
 ];
 
-const getPieChartData = data =>{
-  return data.map(item=>{
-    return {name:item.title,value:item.value}})
-}
+
 
 
 if(isLoading){
@@ -40,6 +37,7 @@ if(isLoading){
 }
     return (
         <div>
+  <title>LocalChefBazar Platform Statistics</title>
             
            <div className="stats shadow flex flex-col md:flex-row md:justify-between ">
 
@@ -94,27 +92,7 @@ if(isLoading){
 </div>
 
   </div>
-<div className='mt-10'>
-  <h3 className="font-bold text-xl">Order Status Distribution</h3>
-   
-    <PieChart style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 2 }} responsive>
-      <Pie
-        dataKey="value"
-        startAngle={180}
-        endAngle={0}
-        data={getPieChartData(statsArray)}
-        cx="50%"
-        cy="100%"
-        outerRadius="120%"
-        fill="#8884d8"
-        label
-        isAnimationActive={true}
-      />
-    <Legend></Legend>
-    <Tooltip></Tooltip>
-    </PieChart>
-  
-</div>
+
   </div> 
         </div>
     );

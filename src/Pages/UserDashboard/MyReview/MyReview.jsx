@@ -18,13 +18,13 @@ const {data:reviews=[],refetch,isLoading}=useQuery({
    
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/review?email=${user?.email}`)
-        console.log(res.data)
+        // console.log(res.data)
         return res.data;
     }
 })
 
 const handleReviewDelete = (id)=>{
-console.log(id)
+// console.log(id)
 Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
@@ -80,8 +80,10 @@ if(isLoading){
 
     return (
         <div>
+  <title>LocalChefBazar My Review</title>
+
             <div className="overflow-x-auto">
-              <h3 className="text-2xl font-bold text-center my-10">My Review</h3>
+              <h3 className="text-3xl font-bold text-center my-10">My Reviews</h3>
   <table className="table">
     {/* head */}
     <thead>

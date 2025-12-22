@@ -11,7 +11,7 @@ useEffect(()=>{
 const savePayment = async () => {
         try {
           const res = await axios.post(
-            'http://localhost:3000/payment-success',
+            'https://localchefbazar-roan.vercel.app/payment-success',
             { sessionId }
           );
           console.log('Payment updated:', res.data);
@@ -32,6 +32,7 @@ const savePayment = async () => {
  
     <div className="min-h-screen flex items-center justify-center bg-slate-50 font-poppins px-4">
       <div className="card w-full max-w-sm bg-white shadow-lg p-8 text-center rounded-2xl">
+  <title>LocalChefBazar Payment Success</title>
         
         {/* Simple Green Icon */}
         <div className="flex justify-center mb-6">

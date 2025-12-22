@@ -6,15 +6,15 @@ import Loading from '../Components/Loading/Loading';
 
 const ChefRoute = ({children}) => {
 
-const navigate = useNavigate()
-const {user} = useAuth()
-const {isRoleLoading,isChef}= useRole()
+const navigate = useNavigate();
+const {user} = useAuth();
+const {isRoleLoading,isChef}= useRole();
 
 if(isRoleLoading){
-    return <Loading></Loading>
+    return <Loading></Loading>;
 }
 if(user && isChef){
-    return children
+    return children;
 }
 
 return navigate('/')

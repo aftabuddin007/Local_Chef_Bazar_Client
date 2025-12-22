@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const MyProfile = () => {
     const{user}=useAuth()
 const axiosSecure = useAxiosSecure()
-const {data:profiles=[]}=useQuery({
+const {data:profiles=[],refetch}=useQuery({
     queryKey:['myProfiles',user?.email],
     queryFn:async ()=>{
         const res = await axiosSecure.get(`/user?email=${user?.email}`)
@@ -26,12 +26,23 @@ const {data:profiles=[]}=useQuery({
   };
   const res = await axiosSecure.post('/request',requestData)
   if(res.data.success){
-    toast.success("Request sent Successfully!")
-  }
+    refetch()
+    toast.success(res.data.message)
+  }else {
+      toast.error(res.data.message);
     }
+    }
+    const isChefDisabled =
+  profile?.pendingRequestRole === 'chef' || profile?.role === 'chef';
+
+const isAdminDisabled =
+  profile?.pendingRequestRole === 'admin' || profile?.role === 'admin';
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Title */}
+  <title>LocalChefBazar My Profile</title>
+
       <h2 className="text-2xl font-bold">My Profile</h2>
 
       {/* Top Card */}
@@ -88,20 +99,38 @@ const {data:profiles=[]}=useQuery({
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4">
-        {profile.role !== "chef" && profile.role !== "admin" && (
-          <button onClick={() => handleRequest("chef")} className="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
-            Be a Chef
-          </button>
-        )}
+      <div className='flex gap-10'>
+      {profile.status === 'active' && profile.role !== 'chef' && profile.role !== 'admin' && (
+  <button
+    onClick={() => handleRequest('chef')}
+    disabled={isChefDisabled}
+    className={`px-4 py-2 rounded-xl text-white cursor-pointer
+      ${isChefDisabled
+        ? 'bg-gray-400 cursor-not-allowed'
+        : 'bg-blue-600 hover:bg-blue-700'
+      }`}
+  >
+    {profile.pendingRequestRole === 'chef' ? 'Request Pending' : 'Be a Chef'}
+  </button>
+)}
 
-        {profile.role !== "admin" && (
-          <button onClick={() => handleRequest("admin")} className="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700">
-            Be an Admin
-          </button>
-        )}
+
+        {profile.status === 'active' && profile.role !== 'admin' && (
+  <button
+    onClick={() => handleRequest('admin')}
+    disabled={isAdminDisabled}
+    className={`px-4 py-2 rounded-xl text-white cursor-pointer
+      ${isAdminDisabled
+        ? 'bg-gray-400 cursor-not-allowed'
+        : 'bg-green-600 hover:bg-green-700'
+      }`}
+  >
+    {profile.pendingRequestRole === 'admin' ? 'Request Pending' : 'Be an Admin'}
+  </button>
+)}
+</div>
       </div>
-    </div>
+    
 
 
 

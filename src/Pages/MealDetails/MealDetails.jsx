@@ -7,14 +7,16 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../../Contexts/AuthContext/useAxiosSecure';
 const MealDetails = () => {
   const {user} = useAuth()
     const {id} =useParams()
-const [ setShowForm] = useState(false);
+    const axiosSecure = useAxiosSecure()
+
 const {data:details,isLoading, } = useQuery({
 queryKey:['meal',id],
 queryFn:async ()=>{
-  const res = await axios.get(`http://localhost:3000/meals/${id}`)
+  const res = await axios.get(`https://localchefbazar-roan.vercel.app/meals/${id}`)
   return res.data.result
 }
 })
@@ -22,47 +24,42 @@ queryFn:async ()=>{
 const {data:reviews = [],refetch} =useQuery({
   queryKey:["reviews",id],
   queryFn:async ()=>{
-const res = await axios.get(`http://localhost:3000/reviews/${id}`)
+const res = await axiosSecure.get(`/reviews/${id}`)
 return res.data;
   }
 })
 const {register, handleSubmit, reset} = useForm()
 
-const onSubmit = async (data)=>{
-  try{
-      const ratingFloat = parseFloat(data.rating);
+
+const onSubmit = async (data) => {
+  try {
+    const ratingFloat = parseFloat(data.rating);
 
     const reviewPayload = {
       foodId: id,
-      mealName:details.foodName,
+      mealName: details.foodName,
       reviewerName: user.displayName,
       reviewerImage: user.photoURL,
       reviewerEmail: user.email,
-      rating: ratingFloat,        // float rating
-      comment: data.comment, 
-       
-         // dynamic comment
+      rating: ratingFloat,
+      comment: data.comment,
     };
-// console.log(reviewPayload)
-    // const idToken = await user.getIdToken();
-await axios.post("http://localhost:3000/reviews", reviewPayload
-  // , {
-  // headers: { Authorization: `Bearer ${idToken}` },
-// }
-);
+
+    await axiosSecure.post('/reviews', reviewPayload);
 
     toast.success("Review submitted successfully!");
     reset();
-    setShowForm(false);
 
-    // REFRESH reviews using refetch
+    // refresh reviews
     refetch(); 
+const modal = document.getElementById('my_modal_3');
+    if(modal) modal.close();
+    
+  } catch (err) {
+    toast.error(err);
   }
-    catch (err) {
-    toast.error("Failed to submit review");
-  }
-  
-}
+};
+
 const handleAddFavorite = async ()=>{
   try{
     const favoritePayload = {
@@ -73,7 +70,7 @@ const handleAddFavorite = async ()=>{
       chefName: details.chefName,
       price: details.price,
     };
-    const res = await axios.post('http://localhost:3000/favorites',favoritePayload)
+    const res = await axios.post('https://localchefbazar-roan.vercel.app/favorites',favoritePayload)
     if(res.data.success){
       toast.success(res.data.message)
     }else{
@@ -99,6 +96,8 @@ console.error(err);
 
     return (
         <div>
+  <title>LocalChefBazar Meal Details</title>
+
              <div className="w-full min-h-screen bg-gray-100 p-4 md:p-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
 

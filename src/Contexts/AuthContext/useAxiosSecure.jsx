@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 
 
 const axiosSecure = axios.create({
-    baseURL:"http://localhost:3000"
+    baseURL:"https://localchefbazar-roan.vercel.app"
 })
 
 const useAxiosSecure = () => {

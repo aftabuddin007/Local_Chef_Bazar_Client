@@ -17,7 +17,7 @@ const handleLogout = ()=>{
 
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm max-w-7xl mx-auto">
+            <div className="navbar bg-base-100  max-w-7xl mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,10 +67,10 @@ const handleLogout = ()=>{
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3  w-52 p-2 shadow">
         <li>
-          <a className="justify-between">
+          <Link to='/dashboard/myProfile' className="justify-between">
             Profile
             <span className="badge px-2 py-1 bg-green-400">Active</span>
-          </a>
+          </Link>
         </li>
         <p className="font-bold">Name: {user?.displayName}</p>
         <p className="font-bold my-5">Email: {user?.email}</p>

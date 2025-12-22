@@ -1,20 +1,25 @@
-// import React, { useEffect } from 'react';
+
 
 import { Link } from "react-router";
 import MealCard from "../../../Components/MealCard/MealCard";
-// import { useQuery } from "@tanstack/react-query";
-// import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Contexts/AuthContext/useAxiosSecure";
+import Loading from "../../../Components/Loading/Loading";
 
-const RecentMeal = ({recentMealPromise}) => {
-    // console.log(recentMealPromise)
-//    const {data=[],isLoading} = useQuery({
-//      queryKey: ['meals'],          // unique key
-//     queryFn: async () => {
-//       const res = await axios.get('http://localhost:3000/recent-meal');
-//       console.log(res.data)
-//       return res.data;
-//     }
-//    })
+
+const RecentMeal = () => {
+    const axiosSecure = useAxiosSecure()
+   const {data:recentMealPromise=[],isLoading}=useQuery({
+    queryKey:['recent-meals',],
+    queryFn:async ()=>{
+        const res = await axiosSecure.get(`/recent-meal`)
+        
+        return res.data;
+    }
+})
+if(isLoading){
+    return <Loading></Loading>
+}
     return (
         <div className='max-w-7xl mx-auto'>
             <h2 className='text-4xl font-bold text-center my-10'>Our Popular Meal</h2>

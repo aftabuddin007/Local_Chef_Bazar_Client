@@ -5,7 +5,7 @@ const Logo = () => {
     return (
         <div>
             <Link to='/'>
-  <a className="btn btn-ghost flex items-center gap-2 transition-all hover:scale-105">
+  <a className=" flex items-center gap-2 transition-all hover:scale-105">
     {/* Logo Image */}
     <img src={logo1} alt="LocalChefBazar Logo" className="h-10 sm:h-16 w-auto object-contain" />
     

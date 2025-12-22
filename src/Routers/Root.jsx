@@ -35,7 +35,7 @@ import AdminRoute from './AdminRoute';
     children:[{
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:3000/recent-meal'),
+        // loader:()=>fetch('https://localchefbazar-roan.vercel.app/recent-meal'),
         
 
     },{
@@ -44,10 +44,15 @@ import AdminRoute from './AdminRoute';
        
     },{
         path:'/meal-details/:id',
-        element:<MealDetails></MealDetails>
+        element:<PrivateRoute>
+            <MealDetails></MealDetails>
+        </PrivateRoute>
     },{
         path:'/order-form/:id',
-        element:<OrderForm></OrderForm>
+        element:<PrivateRoute>
+
+            <OrderForm></OrderForm>
+        </PrivateRoute>
     }]
 },{
 path:'/dashboard',
@@ -56,6 +61,7 @@ element:<PrivateRoute>
 </PrivateRoute> ,
 children:[
     {
+        
         path:'myProfile',
         element:<PrivateRoute>
             <MyProfile></MyProfile>
