@@ -190,7 +190,7 @@ return <Loading></Loading>
         {/* Button */}
         <button
           type="submit"
-          className="w-full btn-primary cursor-pointer text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
+          className="w-full btn btn-primary cursor-pointer text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition"
         >
           Confirm Order
         </button>

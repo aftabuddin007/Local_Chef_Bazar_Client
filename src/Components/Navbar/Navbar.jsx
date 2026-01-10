@@ -79,6 +79,7 @@ const handleLogout = ()=>{
     </div>:<Link to='/auth/login' className="btn btn-primary">Login</Link>}
   </div>
   </div>
+  <hr />
 </div>
       
     )

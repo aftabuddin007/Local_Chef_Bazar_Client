@@ -37,7 +37,7 @@ const totalPages = Math.ceil((countData.count || 0) / itemsPerPage);
 
           <div className='max-w-7xl mx-auto'>
             <h2 className='text-4xl font-bold text-center py-10'>All Meals</h2>
-             <div className="text-right px-20">
+             <div className="text-right px-20  mb-10">
         <select
           defaultValue="sort"
           onChange={(e) => {
