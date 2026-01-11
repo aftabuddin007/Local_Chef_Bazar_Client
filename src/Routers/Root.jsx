@@ -26,6 +26,9 @@ import Error from '../Shared/Error/Error';
 import PrivateRoute from './PrivateRoute';
 import ChefRoute from './ChefRoute';
 import AdminRoute from './AdminRoute';
+import BlogPage from '../Pages/Blog/Blog';
+import ContactUsPage from '../Pages/ContactUs/Contact';
+import PrivacyPolicyPage from '../Pages/Privacy/Privacy';
 
 
     const router = createBrowserRouter([
@@ -43,6 +46,21 @@ import AdminRoute from './AdminRoute';
         element:<Meals></Meals>,
        
     },{
+        path:'/blog',
+        element:<BlogPage></BlogPage>
+
+    },
+    {
+        path:'/contact',
+        element:<ContactUsPage></ContactUsPage>
+    },
+    {
+        path:'/privacy',
+        element:<PrivacyPolicyPage></PrivacyPolicyPage>
+    }
+    
+    ,
+    {
         path:'/meal-details/:id',
         element:<PrivateRoute>
             <MealDetails></MealDetails>

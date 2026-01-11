@@ -28,9 +28,14 @@ const handleLogout = ()=>{
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
         <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
       <li><NavLink to='/meals' className={navLinkClass}>Meals</NavLink></li>
+       <li><NavLink to='/blog'className={navLinkClass}> Blogs</NavLink></li>
+
       {
         user && <>
         <li><NavLink to='/dashboard' className={navLinkClass}>Dashboard</NavLink></li>
+        <li><NavLink to='/contact' className={navLinkClass}>Contact Us</NavLink></li>
+        <li><NavLink to='/privacy' className={navLinkClass}>Privacy & Policy</NavLink></li>
+
         
         </>
       }
@@ -45,9 +50,13 @@ const handleLogout = ()=>{
     <ul className="menu menu-horizontal px-1 text-xl">
        <li><NavLink to='/'className={navLinkClass}> Home</NavLink></li>
        <li><NavLink to='/meals'className={navLinkClass}> Meals</NavLink></li>
+       <li><NavLink to='/blog'className={navLinkClass}> Blogs</NavLink></li>
       {
         user && <>
         <li><NavLink to='/dashboard' className={navLinkClass}>Dashboard</NavLink></li>
+        <li><NavLink to='/contact' className={navLinkClass}>Contact Us</NavLink></li>
+        <li><NavLink to='/privacy' className={navLinkClass}>Privacy & Policy</NavLink></li>
+
         
         </>
       }
