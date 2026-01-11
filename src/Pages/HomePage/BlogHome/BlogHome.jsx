@@ -35,7 +35,7 @@ const BlogSection = () => {
         {/* RIGHT IMAGE */}
         <div className="flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1543353071-087092ec393a"
+            src="https://i.ibb.co.com/4gSBLmbc/pexels-sydney-troxell-223521-718742.jpg"
             alt="Local chef cooking homemade food"
             className="rounded-2xl shadow-lg w-full max-w-md object-cover"
           />
