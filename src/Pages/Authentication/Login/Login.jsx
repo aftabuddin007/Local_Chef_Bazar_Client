@@ -9,12 +9,13 @@ import Logo from '../../../Shared/Logo/Logo';
 
 const Login = () => {
     const [show,setShow]=useState(false)
-
+  
+    // const [demoData, setDemoData] = useState({ email: '', password: '' });
 const navigate = useNavigate()
     const location = useLocation()
   const from = location.state || '/'
     const {register,
-        handleSubmit,formState: { errors },} = useForm();
+        handleSubmit,formState: { errors },setValue} = useForm();
 const {signInWithGoogle,loginInUser,loading}=useAuth()
 
 const handleLogin=(data)=>{
@@ -44,6 +45,20 @@ console.log(err)
 toast.error(err.message)
     }
  }
+
+
+ const handleDemoLogin = () => {
+        const demoCredentials = {
+            email: 'customer1@gmail.com',
+            password: '123aA@'
+        };
+        // Fill the form inputs
+        setValue('email', demoCredentials.email);
+        setValue('password', demoCredentials.password);
+
+        // Login automatically
+        handleLogin(demoCredentials);
+    };
  if(loading){
     <Loading></Loading>
  }
@@ -86,12 +101,24 @@ bg-[url(https://i.ibb.co.com/ksGkhrR9/food-photography-background-iyvy.png)] bg-
           <span onClick={()=>setShow(!show)} className='absolute right-7 top-8 cursor-pointer z-50'>{show ? <FaRegEye />:<FaEyeSlash />}</span>
           </div>
           
+
+
           
             <button type='button' 
             // onClick={handleForgetPassword} 
             className=" text-left  link link-hover">Forgot password?</button>
-            
-          <button type='submit' className="btn btn-primary mt-4 ">Login</button>
+            <div className='flex justify-between gap-4'>
+          <button type='submit' className="btn btn-primary  w-[45%]">Login</button>
+           {/* Demo Login */}
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary  w-[45%]"
+                                    onClick={handleDemoLogin}
+                                >
+                                    Demo Login
+                                </button>
+            </div>
+
           <p className='text-center font-bold text-md'>Or</p>
           <div className='text-center  '>
             {/* Google */}
