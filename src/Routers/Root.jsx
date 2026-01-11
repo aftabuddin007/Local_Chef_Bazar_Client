@@ -62,9 +62,7 @@ import PrivacyPolicyPage from '../Pages/Privacy/Privacy';
     ,
     {
         path:'/meal-details/:id',
-        element:<PrivateRoute>
-            <MealDetails></MealDetails>
-        </PrivateRoute>
+        element:<MealDetails></MealDetails>
     },{
         path:'/order-form/:id',
         element:<PrivateRoute>
