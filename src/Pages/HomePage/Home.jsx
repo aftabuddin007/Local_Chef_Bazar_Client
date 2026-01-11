@@ -8,7 +8,7 @@ import FAQ from './Faq/Faq';
 import NewsletterSection from './Contact/ContactHome';
 import BlogSection from './BlogHome/BlogHome';
 import AboutUsSection from './AboutUs/AboutUs';
-// import HomeSection from './StatusPage/Statuspage';
+import HomeSection from './StatusPage/Statuspage';
 
 const reviewPromise = fetch('https://localchefbazar-roan.vercel.app/reviews')
 .then(res=>res.json())
@@ -21,7 +21,7 @@ const Home = () => {
 
             <HeroBanner></HeroBanner>
             <AboutUsSection></AboutUsSection>
-            {/* <HomeSection></HomeSection> */}
+            <HomeSection></HomeSection>
             <RecentMeal></RecentMeal>
             <WhyChoose></WhyChoose>
             <BlogSection></BlogSection>
