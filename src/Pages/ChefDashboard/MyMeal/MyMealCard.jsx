@@ -40,7 +40,7 @@ Swal.fire({
 
     return (
         <div>
-            <div className="bg-white shadow-md rounded-xl overflow-hidden">
+            <div className="bg-base-100 shadow-md rounded-xl overflow-hidden">
       {/* Food Image */}
       <img 
         src={meal.foodImage} 
@@ -63,17 +63,17 @@ Swal.fire({
         </div>
 
         {/* Ingredients */}
-        <p className="text-gray-600 text-sm mb-2">
+        <p className="text-base-600 text-sm mb-2">
           <strong>Ingredients:</strong> {meal.ingredients}
         </p>
 
         {/* Estimated Delivery Time */}
-        <p className="text-gray-600 text-sm mb-2">
+        <p className="text-base-600 text-sm mb-2">
           <strong>Delivery Time:</strong> {meal.estimatedDeliveryTime} mins
         </p>
 
         {/* Chef Info */}
-        <p className="text-gray-600 text-sm mb-4">
+        <p className="text-base-600 text-sm mb-4">
           <strong>Chef:</strong> {meal.chefName} (ID: {meal.chefId})
         </p>
 

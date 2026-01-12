@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 const BlogSection = () => {
   return (
-    <section className="max-w-7xl mx-auto my-20 px-4">
+    <section className="max-w-7xl mx-auto my-20 px-4 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
-        {/* LEFT CONTENT */}
-        <div>
+        {/* LEFT CONTENT - Slips in from the left */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Stories From Our Local Chefs
           </h2>
@@ -26,20 +32,30 @@ const BlogSection = () => {
           </p>
 
           <Link to="/blog">
-            <button className="btn btn-primary px-8">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-primary px-8"
+            >
               Explore more Blogs →
-            </button>
+            </motion.button>
           </Link>
-        </div>
+        </motion.div>
 
-        {/* RIGHT IMAGE */}
-        <div className="flex justify-center">
+        {/* RIGHT IMAGE - Slips in from the right */}
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="flex justify-center"
+        >
           <img
             src="https://i.ibb.co.com/4gSBLmbc/pexels-sydney-troxell-223521-718742.jpg"
             alt="Local chef cooking homemade food"
             className="rounded-2xl shadow-lg w-full max-w-md object-cover"
           />
-        </div>
+        </motion.div>
 
       </div>
     </section>
