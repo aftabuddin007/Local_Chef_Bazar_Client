@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../Contexts/AuthContext/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { imageUpload } from '../../utils';
 
 const MyProfile = () => {
     const{user}=useAuth()
 const axiosSecure = useAxiosSecure()
+ const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+ const [formData, setFormData] = useState({
+    name: '',
+    address: '',
+    imageFile: null,
+  });
+
+
+
 const {data:profiles=[],refetch}=useQuery({
     queryKey:['myProfiles',user?.email],
     queryFn:async ()=>{
@@ -17,6 +29,68 @@ const {data:profiles=[],refetch}=useQuery({
     })
     // console.log(profiles)
   const profile = profiles[0] || {};
+
+ const handleEditClick = () => {
+    setFormData({
+      name: profile?.name || '',
+      address: profile?.address || '',
+      imageFile: null,
+    });
+    setIsEditing(true);
+  };
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === 'image') {
+      setFormData({ ...formData, imageFile: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+
+      let imageUrl = profile?.image;
+
+      if (formData.imageFile) {
+        imageUrl = await imageUpload(formData.imageFile);
+      }
+
+      const updatedProfile = {
+        name: formData.name,
+        address: formData.address,
+        image: imageUrl,
+      };
+
+      const res = await axiosSecure.patch(
+        `/users/profile/${profile.email}`,
+        updatedProfile
+      );
+
+      if (res.data.success) {
+        toast.success(res.data.message);
+        refetch();
+        setIsEditing(false);
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      toast.error('Profile update failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
+
+
+
   // console.log(profile)
     const handleRequest = async(type)=>{
     const requestData = {
@@ -37,8 +111,14 @@ const {data:profiles=[],refetch}=useQuery({
 
 const isAdminDisabled =
   profile?.pendingRequestRole === 'admin' || profile?.role === 'admin';
+const isEditDisabled = !!profile?.pendingRequestRole;
+
+
 
   return (
+
+
+    
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       {/* Title */}
   <title>LocalChefBazar My Profile</title>
@@ -128,6 +208,75 @@ const isAdminDisabled =
     {profile.pendingRequestRole === 'admin' ? 'Request Pending' : 'Be an Admin'}
   </button>
 )}
+</div>
+<div className="bg-base-100 shadow rounded-2xl p-6">
+  <h3 className="text-lg font-semibold mb-4">
+    {isEditing ? 'Edit Profile' : 'Profile Actions'}
+  </h3>
+
+  {!isEditing ? (
+    <button
+      onClick={handleEditClick}
+      className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700"
+    >
+      Edit Profile
+    </button>
+  ) : (
+    <form onSubmit={handleUpdateProfile} className="space-y-4">
+      <div>
+        <label className="text-sm text-base-500">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="input input-bordered w-full"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="text-sm text-base-500">Profile Image</label>
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={handleChange}
+          className="file-input file-input-bordered w-full"
+        />
+      </div>
+
+      <div>
+        <label className="text-sm text-base-500">Address</label>
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          className="input input-bordered w-full"
+          required
+        />
+      </div>
+
+      <div className="flex gap-4">
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 disabled:opacity-50"
+        >
+          {loading ? 'Saving...' : 'Save Changes'}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setIsEditing(false)}
+          className="px-4 py-2 bg-gray-400 text-white rounded-xl"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  )}
 </div>
       </div>
     
