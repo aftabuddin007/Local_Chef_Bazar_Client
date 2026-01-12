@@ -83,7 +83,7 @@ if(isLoading){
 
       <form
        onSubmit={handleSubmit(onSubmit)} 
-       className="grid grid-cols-1 md:grid-cols-2 gap-4 border-2 p-6 rounded-lg shadow-lg bg-white">
+       className="grid grid-cols-1 md:grid-cols-2 gap-4 border-2 p-6 rounded-lg shadow-lg bg-base-100">
 
         {/* Food Name */}
         <div className="flex flex-col">
@@ -215,7 +215,7 @@ if(isLoading){
           <input  {...register('userEmail', { required: true })}
             defaultValue={user?.email}
             readOnly
-            className="border p-2 rounded bg-gray-100"
+            className="border p-2 rounded bg-base-100"
           />
         </div>
 
@@ -223,7 +223,7 @@ if(isLoading){
         <div className="md:col-span-2 flex justify-center">
           <button
             type="submit"
-            className="bg-blue-600 cursor-pointer text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+            className="bg-blue-600 cursor-pointer text-base-100 px-6 py-2 rounded hover:bg-blue-700 transition"
           >
             Add Meal
           </button>

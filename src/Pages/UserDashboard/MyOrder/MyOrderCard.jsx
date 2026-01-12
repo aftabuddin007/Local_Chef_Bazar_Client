@@ -28,17 +28,17 @@ const handlePayment = async(order)=>{
 
     return (
         <div className='mb-5'>
-           <div className=" bg-gray-50 p-4  ">
+           <div className=" bg-base-50 p-4  ">
 
 
 
 
 <div
 key={order.id}
-className="bg-white p-4 rounded-xl  border-gray-200 shadow-sm border-4"
+className="bg-base-100 p-4 rounded-xl  border-gray-200 shadow-sm border-4"
 >
 <h2 className="text-lg font-semibold">{order.mealName}</h2>
-<p className="text-sm text-gray-500 mb-2">Order ID: {order._id}</p>
+<p className="text-sm text-base-500 mb-2">Order ID: {order._id}</p>
 
 
 <div className="text-sm space-y-1">
