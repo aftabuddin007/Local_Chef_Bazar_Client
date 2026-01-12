@@ -45,14 +45,14 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section className="bg-base-100 py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold  mb-4">
             Our Growing Community
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className=" max-w-2xl mx-auto">
             Connecting local home chefs with food lovers in your neighborhood. 
             Fresh, authentic, and delivered with love.
           </p>
@@ -67,9 +67,9 @@ const StatsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: stat.id * 0.1 }}
-              className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow"
+              className="relative overflow-hidden rounded-2xl bg-base-100 p-8 shadow-sm border-5 border-gray-100 text-center hover:shadow-md transition-shadow"
             >
-              <dt className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+              <dt className="text-sm font-medium  uppercase tracking-wide">
                 {stat.name}
               </dt>
               <dd className="mt-2">

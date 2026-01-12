@@ -6,7 +6,7 @@ const Error = () => {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white font-poppins px-6">
+    <div className="min-h-screen flex items-center justify-center bg-base-100 font-poppins px-6">
       <div className="text-center max-w-lg">
         {/* Animated Icon Section */}
         <motion.div 

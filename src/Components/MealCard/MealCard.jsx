@@ -15,7 +15,7 @@ const MealCard = ({food}) => {
   } = food;
     return (
         <div>
-             <div className="bg-white rounded-xl shadow-md sm:p-4 sm:w-72 hover:shadow-lg transition duration-300">
+             <div className="bg-base-100 rounded-xl shadow-md sm:p-4 sm:w-72 hover:shadow-lg transition duration-300 p-2">
       {/* Food Image */}
       <div className="w-full h-40 overflow-hidden rounded-lg">
         <img
@@ -29,13 +29,13 @@ const MealCard = ({food}) => {
       <h2 className="text-lg font-semibold mt-3">{foodName}</h2>
 
       {/* Chef Info */}
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-base-600">
         Chef: <span className="font-medium">{chefName}</span>
       </p>
-      <p className="text-sm text-gray-600">Chef ID: {chefId}</p>
+      <p className="text-sm text-base-600">Chef ID: {chefId}</p>
 
       {/* Delivery Area */}
-      <p className="text-sm text-gray-600">
+      <p className="text-sm text-base-600">
         Delivery Area: <span className="font-medium">{deliveryArea}</span>
       </p>
 

@@ -1,10 +1,13 @@
 import { Link, NavLink } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Logo from "../../Shared/Logo/Logo";
+import { useTheme } from "../../Contexts/ThemeContext/ThemeContext";
+import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
 
 const Navbar = () => {
 const {user,logOut} = useAuth()
+const {theme, toggleTheme} = useTheme()
 
 const handleLogout = ()=>{
   logOut()
@@ -63,6 +66,9 @@ const handleLogout = ()=>{
     </ul>
   </div>
   <div className="navbar-end">
+    <button onClick={toggleTheme} className="btn btn-ghost btn-circle">
+      {theme === 'light' ? <MdDarkMode size={24} /> : <MdLightMode size={24} />}
+    </button>
     {user?<div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">

@@ -6,8 +6,8 @@ const HomeReview = ({ reviewPromise }) => {
     const reviews = use(reviewPromise);
 
     return (
-        <div className='mb-10 bg-gray-50 py-10'>
-            <h2 className='text-3xl font-bold text-center mb-12 text-slate-800'>
+        <div className='mb-10 bg-base-50 py-10'>
+            <h2 className='text-3xl font-bold text-center mb-12 text-base-800'>
                 What Our Happy Customers Say?
             </h2>
 

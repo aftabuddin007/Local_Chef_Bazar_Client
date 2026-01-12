@@ -26,7 +26,7 @@ const WhyChoose = () => {
 ];
     return (
         <div>
-            <section className="py-20 bg-slate-50 font-poppins">
+            <section className="py-20 bg-base-100 font-poppins">
       <div className="container mx-auto px-6">
         
         {/* Header Section */}
@@ -35,7 +35,7 @@ const WhyChoose = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-slate-800 mb-4"
+            className="text-4xl font-bold text-base-800 mb-4"
           >
             Why Choose <span className="text-orange-500">LocalChefBazar?</span>
           </motion.h2>
@@ -43,7 +43,7 @@ const WhyChoose = () => {
              initial={{ opacity: 0 }}
              whileInView={{ opacity: 1 }}
              transition={{ delay: 0.2 }}
-             className="text-slate-600 max-w-2xl mx-auto"
+             className="text-base-600 max-w-2xl mx-auto"
           >
             We bridge the gap between local culinary talent and food lovers looking for authentic, healthy, and convenient meals.
           </motion.p>
@@ -58,13 +58,13 @@ const WhyChoose = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               whileHover={{ y: -10 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100"
+              className="bg-base-100 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-100"
             >
-              <div className="bg-slate-50 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+              <div className="bg-base-50 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">{feature.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold text-base-800 mb-3">{feature.title}</h3>
+              <p className="text-base-600 text-sm leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

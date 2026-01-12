@@ -82,17 +82,17 @@ const BlogPage = () => {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-base-50 to-base-100">
      
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-base-900 mb-4">
             Cook. Share. Earn.
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base-600 max-w-2xl mx-auto">
             Discover expert tips, inspiring stories, and practical advice for home cooks 
             and food lovers on LocalChefBazaar.
           </p>
@@ -126,7 +126,7 @@ const BlogPage = () => {
           {filteredPosts.map((post) => (
             <article 
               key={post.id} 
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="bg-base-100 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* Post Image */}
               <div className="h-48 overflow-hidden">
@@ -151,12 +151,12 @@ const BlogPage = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                <h3 className="text-lg font-bold text-base-900 mb-2 line-clamp-2">
                   {post.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-base-600 mb-4 line-clamp-3">
                   {post.excerpt}
                 </p>
 
@@ -182,7 +182,7 @@ const BlogPage = () => {
         {/* Empty State */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-12">
-            <BookOpen className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+            <BookOpen className="h-16 w-16 text-base-300 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">No articles found</h3>
             <p className="text-gray-600">Try selecting a different category or search term</p>
           </div>

@@ -16,7 +16,7 @@ const Home = () => {
     
     
     return (
-        <div className='bg-[#FFF8F0]'>
+        <div className='bg-base-100'>
   <title>LocalChefBazar Home</title>
 
             <HeroBanner></HeroBanner>

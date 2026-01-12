@@ -91,7 +91,7 @@ bg-[url(https://i.ibb.co.com/Pv4wB7GS/252811-melbourne-restaurants-LAY.png)] bg-
 
              <div className='my-10'>
            <div className='relative z-10 w-full max-w-sm 
-  bg-white/25 backdrop-blur-xl
+  bg-base-100/25 backdrop-blur-xl
   border border-white/30
   shadow-[0_25px_70px_rgba(0,0,0,0.45)]
   rounded-2xl '>

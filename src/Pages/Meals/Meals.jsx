@@ -55,7 +55,7 @@ const Meals = () => {
   };
 
   return (
-    <div className="bg-[#FFF8F0]">
+    <div className="bg-base-100">
       <title>LocalChefBazar All Meals</title>
 
       <div className="max-w-7xl mx-auto">

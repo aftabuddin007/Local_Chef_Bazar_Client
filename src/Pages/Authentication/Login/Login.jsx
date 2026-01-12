@@ -70,7 +70,7 @@ bg-[url(https://i.ibb.co.com/ksGkhrR9/food-photography-background-iyvy.png)] bg-
   <title>LocalChefBazar Login</title>
   <div className="absolute inset-0 bg-black/50"></div>
                 <div className="card  w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body relative z-10 card w-full max-w-sm rounded-2xl bg-white/25 backdrop-blur-xl
+      <div className="card-body relative z-10 card w-full max-w-sm rounded-2xl bg-base-100/25 backdrop-blur-xl
   border border-white/30
   shadow-[0_25px_70px_rgba(0,0,0,0.45)]
   ">
