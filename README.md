@@ -15,7 +15,7 @@
 
 **LocalChefBazar** is a production-ready, full-stack food delivery platform designed to bridge the gap between local chefs and customers, providing a seamless, fast, and interactive web experience. The platform allows users to browse a wide variety of meals, place orders, leave reviews, and manage their favorite dishes, all in a secure and responsive environment.  
 
-The system is built with **role-based access control**, ensuring that users, chefs, and administrators each have customized dashboards tailored to their needs. Chefs can efficiently manage their meal listings, while admins maintain full oversight of platform activity, including user management, order tracking, and analytics reporting.  
+The system is built with **role-based access control**, ensuring that users, chefs, and administrators each have customized and user can order his /her food to search and select food on cart dashboards tailored to their needs. Chefs can efficiently manage their meal listings, while admins maintain full oversight of platform activity, including user management, order tracking, and analytics reporting.  
 
 From a technical standpoint, LocalChefBazar demonstrates modern full-stack engineering practices: a **React-based frontend** with reusable components, responsive design, and smooth animations; a **Node.js and Express backend** with scalable RESTful APIs; and a **MongoDB database** for reliable data management. Integrated tools like **Firebase Authentication**, **Stripe payment gateway**, and **React Query** enhance security, performance, and real-world usability.  
 
